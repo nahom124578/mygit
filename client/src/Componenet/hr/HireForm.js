@@ -1,42 +1,32 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 export default function EmployeeForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [contract, setContract] = useState("");
+  const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
   const [salary, setSalary] = useState("");
   const [department, setDepartment] = useState("");
   const [email, setEmail] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showFormSubmitted, setFormSubmitted] = useState(false);
   const [gender, setGender] = useState(""); // State for Gender
   const [birthday, setBirthday] = useState(""); // State for Birthday
   const [address, setAddress] = useState(""); // State for Address
-  const [bonus, setBonus] = useState(0); // State for Bonus
-  const [tax, setTax] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [bank, setBankAccount] = useState("");
+  const [userid, setUserId] = useState("");
   const [showAdditionalAttributes, setShowAdditionalAttributes] =
-    useState(false); // set this initially not sown by default
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
+    useState(false);
+  const [Error, setError] = useState("");
+  const handleBankAccount = (event) => {
+    setBankAccount(event.target.value);
   };
-  const handleTax = (event) => {
-    setTax(event.target.value);
-  };
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const handleContractChange = (e) => {
-    setContract(e.target.value);
-    setShowAdditionalAttributes(true);
-  };
-
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
   };
-
   const handleEmergencyContactChange = (e) => {
     setEmergencyContact(e.target.value);
   };
@@ -49,34 +39,15 @@ export default function EmployeeForm() {
     setDepartment(e.target.value);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
   };
-  // this is just for testing purpose i mean when a button is clicked it should have contain all necessary information to be sent to database
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({
-      firstName,
-      lastName,
-      contract,
-      department,
-      email,
-      startDate,
-      salary,
-      phoneNumber,
-      address,
-      birthday,
-      bonus,
-      gender,
-      tax,
-    });
-    let isValid = true;
 
-    // Validation logic this is just regular expression that we use to match input filed with this then if it equals then isValid =true then form can be submutted !!
+  // this is just for testing purpose i mean when a button is clicked it should have contain all necessary information to be sent to database
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let isValid = true;
     const nameRegex = /^[A-Za-z]+$/;
     const phoneRegex = /^[0-9]+$/;
     if (!firstName.match(nameRegex)) {
@@ -99,19 +70,51 @@ export default function EmployeeForm() {
       alert("Please enter a valid emergency contact number");
       isValid = false;
     }
-
     if (isValid) {
-      setFormSubmitted(true); // if alll condition is pass then submit the form other wise not submutt it to database
+      // this below is a backend part so i have just excluded it man i send it in a server side of repository !
+      setFormSubmitted(true); // if all condition is pass then submit the form other wise not submutt it to database
+      try {
+        const response = await axios.post("http://localhost:8000/message", {
+          firstName,
+          lastName,
+          role,
+          department,
+          email,
+          startDate,
+          salary,
+          phoneNumber,
+          address,
+          birthday,
+          gender,
+          userid,
+          bank,
+          emergencyContact,
+          specialization,
+          password,
+        });
+        // alert("success");
+        setFormSubmitted(true); // used to checj for a submittion of forms and display a message as submitted successfully !
+        if (response.status === 201) {
+          alert("user is registerd successfully ");
+        }
+      } catch (error) {
+        if ((error.response.status = 408)) {
+          // setError(response.data.error);
+          alert("user already exist man ");
+        } else {
+          alert("error in sending a data ");
+          console.log(error);
+        }
+      }
     }
-    // Validation logic here
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <div className="w-full max-w-md mx-auto">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className=" shadow-md bg-gray-100 rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="flex flex-wrap -mx-3">
             <div className="w-full md:w-1/2 px-3 mb-6">
@@ -119,7 +122,9 @@ export default function EmployeeForm() {
               <input
                 type="text"
                 value={firstName}
-                onChange={handleFirstNameChange}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
                 className="form-input mt-1 block outline-none w-full bg-slate-300"
                 required
               />
@@ -129,7 +134,9 @@ export default function EmployeeForm() {
               <input
                 type="text"
                 value={lastName}
-                onChange={handleLastNameChange}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
                 className="form-input mt-1 block outline-none w-full bg-slate-300"
                 required
               />
@@ -139,13 +146,15 @@ export default function EmployeeForm() {
             <div className="w-full px-3 mb-6">
               <label className="block text-gray-700">Role</label>
               <select
-                value={contract}
-                onChange={handleContractChange}
+                value={role}
+                onChange={(e) => {
+                  setRole(e.target.value);
+                  setShowAdditionalAttributes(true);
+                }}
                 className="form-select mt-1 block w-full outline-none bg-slate-300"
               >
                 <option value=""></option>
                 <option value="Doctors">Doctors</option>
-
                 <option value="Radiologist">Radiologist</option>
                 <option value="LabTechnician">Lab Technician</option>
                 <option value="Pharmacist">Pharmacist</option>
@@ -154,7 +163,7 @@ export default function EmployeeForm() {
               </select>
             </div>
 
-            {showAdditionalAttributes && contract === "Doctors" && (
+            {showAdditionalAttributes && role === "Doctors" && (
               <div className="w-full px-3 mb-6">
                 {/* Additional attributes for Doctors */}
                 <label className="block text-gray-700">Specialization</label>
@@ -162,10 +171,13 @@ export default function EmployeeForm() {
                   type="text"
                   className="form-input mt-1 block outline-none w-full bg-slate-300"
                   placeholder="Enter specialization"
+                  onChange={(e) => {
+                    setSpecialization(e.target.value);
+                  }}
                 />
               </div>
             )}
-            {showAdditionalAttributes && contract === "Radiologist" && (
+            {showAdditionalAttributes && role === "Radiologist" && (
               <div className="w-full px-3 mb-6">
                 {/* Additional attributes for Doctors */}
                 <label className="block text-gray-700">Specialization</label>
@@ -173,6 +185,9 @@ export default function EmployeeForm() {
                   type="text"
                   className="form-input mt-1 block outline-none w-full bg-slate-300"
                   placeholder="Enter specialization"
+                  onChange={(e) => {
+                    setSpecialization(e.target.value);
+                  }}
                 />
               </div>
             )}
@@ -192,7 +207,7 @@ export default function EmployeeForm() {
             <div className="w-full md:w-1/2 px-3 mb-6">
               <label className="block text-gray-700">Emergency Contact:</label>
               <input
-                type="number"
+                type="text"
                 value={emergencyContact}
                 onChange={handleEmergencyContactChange}
                 className="form-input mt-1 outline-none block w-full bg-slate-300"
@@ -216,11 +231,11 @@ export default function EmployeeForm() {
               />
             </div>
             <div className="w-full md:w-1/2 px-3 mb-6">
-              <label className="block text-gray-700">TotalTax in %:</label>
+              <label className="block text-gray-700"> Bank Account</label>
               <input
                 type="number"
-                value={tax}
-                onChange={handleTax}
+                value={bank}
+                onChange={handleBankAccount}
                 className="form-input mt-1 outline-none block w-full bg-slate-300"
                 maxLength={2}
                 required
@@ -237,6 +252,34 @@ export default function EmployeeForm() {
                 required
               />
             </div>
+            <div className="w-full md:w-1/2 px-3 mb-6">
+              <label className="block text-gray-700">
+                Employe Id/username:
+              </label>
+              <input
+                type="text"
+                value={userid}
+                onChange={(e) => {
+                  setUserId(e.target.value);
+                }}
+                className="form-input mt-1 outline-none block w-full bg-slate-300"
+                maxLength={15}
+                required
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3 mb-6">
+              <label className="block text-gray-700">password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                className="form-input mt-1 outline-none block w-full bg-slate-300"
+                maxLength={15}
+                required
+              />
+            </div>
           </div>
           <div className="flex flex-wrap -mx-3">
             <div className="w-full px-3 mb-6">
@@ -244,7 +287,9 @@ export default function EmployeeForm() {
               <input
                 type="email"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 className="form-input mt-1 block w-full outline-none bg-slate-300"
                 required
               />
@@ -259,6 +304,19 @@ export default function EmployeeForm() {
                 value={startDate}
                 onChange={handleStartDateChange}
                 className="form-input outline-none mt-1 block w-full bg-slate-300"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap -mx-3">
+            <div className="w-full px-3 mb-6">
+              <label className="block text-gray-700">BirthDay:</label>
+              <input
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                className="form-input mt-1 block outline-none w-full bg-slate-300"
                 required
               />
             </div>
@@ -290,19 +348,6 @@ export default function EmployeeForm() {
 
           <div className="flex flex-wrap -mx-3">
             <div className="w-full px-3 mb-6">
-              <label className="block text-gray-700">BirthDay:</label>
-              <input
-                type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-                className="form-input mt-1 block outline-none w-full bg-slate-300"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap -mx-3">
-            <div className="w-full px-3 mb-6">
               <label className="block text-gray-700">Address:</label>
               <input
                 type="text"
@@ -313,34 +358,21 @@ export default function EmployeeForm() {
                 required
               />
             </div>
-            <div className="w-full px-3 mb-6">
-              <label className="block text-gray-700">
-                Bonus/compensation in birr:
-              </label>
-              <input
-                type="number"
-                value={bonus}
-                onChange={(e) => setBonus(e.target.value)}
-                className="form-input mt-1 outline-none block w-full bg-slate-300"
-                maxLength={8}
-                required
-              />
-            </div>
+            <div className="w-full px-3 mb-6"></div>
           </div>
-
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white py-4  rounded hover:bg-red-600 px-20 mx-10"
           >
             Hire Employee
           </button>
+          {showFormSubmitted && (
+            <p className=" hover:bg-zinc-400">
+              The form is submitted succesfully ok man of God
+            </p>
+          )}
         </form>
       </div>
-      {formSubmitted ? (
-        <div className="text-green-500 mx-48 ">
-          Form submitted successfully wait for response ok man !
-        </div>
-      ) : null}
     </div>
   );
 }

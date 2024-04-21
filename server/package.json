@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  
   "main": "index.js",
   "dependencies": {
     "abbrev": "^1.1.1",

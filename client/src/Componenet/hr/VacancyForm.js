@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const VacancyForm = () => {
@@ -8,9 +9,9 @@ const VacancyForm = () => {
   const [preferredQualifications, setPreferredQualifications] = useState("");
   const [applicationInstructions, setApplicationInstructions] = useState("");
   const [publishDate, setPublishDate] = useState("");
-  const handleSubmit = (e) => {
+  const [formSubmitted, setformSubmitted] = useState(false);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("u have successfully submitted your forms guys ");
     console.log({
       jobTitle,
       jobDescription,
@@ -19,12 +20,30 @@ const VacancyForm = () => {
       applicationInstructions,
       publishDate,
     });
-    // Handle form submission here
-    // You can send the form data to the server or perform any other action here ok my man !!
+    try {
+      await axios.post("http://localhost:8000/vacancy", {
+        jobTitle,
+        jobDescription,
+        requiredQualifications,
+        preferredQualifications,
+        applicationInstructions,
+        publishDate,
+      });
+      alert("sunmitted successfully !!");
+      setformSubmitted(true);
+    } catch (error) {
+      alert("Not submitted yet ");
+      console.log(error);
+    }
+    {
+      setTimeout(() => {
+        setformSubmitted(false);
+      }, 5000);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-32">
       <div className="mb-4">
         <label
           htmlFor="jobTitle"
@@ -121,10 +140,20 @@ const VacancyForm = () => {
       </div>
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 mb-3 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
       >
-        Submit
+        Post vacancy
       </button>
+      {formSubmitted && (
+        <p className="bg-zinc-400 mt-3 px-4 py-2 flex-grow">
+          form is submitted successfully man{" "}
+        </p>
+      )}
+      {/* {!formSubmitted && (
+        <p className="bg-zinc-400 mt-3 px-4 py-2 flex-grow">
+          form is not successfully submitted try again man{" "}
+        </p>
+      )} */}
     </form>
   );
 };
