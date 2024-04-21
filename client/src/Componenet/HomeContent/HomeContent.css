@@ -1,0 +1,35 @@
+.grid-containerA {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(3, auto); 
+    gap: 10px;
+}
+
+.home-pageA {
+    background-color: #ccc;
+    border: 1px solid #999;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden; /* Hide overflow */
+}
+
+.home-pageA img {
+    height: 150px; /* Adjusted height */
+    width: auto; 
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out; /* Transition effect */
+}
+
+.home-pageA img:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.home-pageA h1 {
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    font-size: 24px;
+    font-weight: bold;
+}

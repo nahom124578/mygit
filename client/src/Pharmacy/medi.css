@@ -1,0 +1,82 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif; /* Specify a system font for better readability */
+    margin: 0;
+    padding: 0;
+
+  }
+  
+  /* Container for the entire application */
+  .medicine-store-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px; /* Optional: Set a maximum width for responsiveness */
+    margin: 0 auto; /* Center the app horizontally */
+    background-color: #f5f5f5; /* Light background color */
+    border: 1px solid #ddd; /* Add a subtle border for definition */
+    border-radius: 5px; /* Add rounded corners for a softer look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a light shadow for depth */
+  }
+  
+  /* Heading styles */
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333; /* Darker text for better contrast */
+  }
+  
+  /* Form styles */
+  .medicine-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 80%;
+    height: 80%;
+    background-color: #fff; /* Lighten the form background for better separation */
+    padding: 10px; /* Add padding for better spacing */
+    border: 1px solid #ccc; /* Add a light border for the form */
+    border-radius: 3px; /* Add rounded corners for the form */
+  }
+  
+  /* Form labels */
+  .medicine-form label {
+    font-weight: bold; /* Make labels stand out */
+  }
+  
+  /* Form input fields */
+  .medicine-input {
+    padding: 5px; /* Add padding for easier typing */
+    border: 1px solid #ccc; /* Light border for input fields */
+    border-radius: 3px; /* Rounded corners for input fields */
+    width: 100%; /* Make inputs take up full width */
+  }
+  
+  /* Add medicine button */
+  .add-medicine-button {
+    background-color: #4CAF50; /* Green color for positive action */
+    color: white; /* White text for readability on green background */
+    padding: 10px 15px; /* Add padding for a comfortable button size */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Indicate clickable behavior */
+  }
+  
+  /* Medicine list styles */
+  .medicine-list {
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Medicine list items */
+  .medicine-item {
+    margin-bottom: 5px; /* Add spacing between list items */
+    padding: 5px 10px; /* Add padding for better readability */
+    border: 1px solid #ddd; /* Light border for each item */
+    border-radius: 3px; /* Rounded corners for list items */
+  }
+  

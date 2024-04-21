@@ -1,0 +1,14 @@
+.navbarDiv{
+    display: flex;
+    width:90%;
+    padding: 20px;
+    background-color: rgb(45, 61, 76);
+   
+}
+    
+.navbarDiv .linkElement{
+    color: #fff;
+    text-decoration: none;
+    padding :0 20px;
+
+ }

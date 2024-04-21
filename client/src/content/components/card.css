@@ -1,0 +1,120 @@
+.content{
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 360px;
+    margin: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.content:hover{
+    transform: scale(1.05);
+}
+.check{
+    height:max-content;
+}
+
+/* about the card  */
+.textcard{
+    height: 3.7rem;
+}
+.image-select, .textcard {
+  transition: height 0.3s ease; /* Apply transition to smooth height changes */
+}
+
+.card{
+    border:none;
+    max-width: 300px;
+    margin: 20px;
+}
+
+.card-image{
+    border-radius: 5px;
+    width: 300px;
+    max-width: 300px;
+    min-height: 250px;
+    cursor: pointer;
+
+}
+
+.image-select {
+    padding: 10px;
+    text-align: left;
+}
+
+p{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* this is for file input */
+
+.image-select {
+    margin: 20px;
+  }
+    
+.image-select{
+    display: block;
+    background-color: rgba(72, 72, 229, 0.548);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.image-select:hover {
+    background-color: rgba(72, 72, 229, 0.763);
+}
+  
+
+/* for the text area */
+.message {
+    margin: 10px;
+}
+  
+.message label {
+    display: block;
+    font-weight: bold;
+}
+
+.textarea, h3{
+    margin: 0px;
+}
+.message textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+
+}
+.message textarea:hover{
+    border: 1px solid darkblue; 
+}
+
+.message textarea:focus {
+    outline: none;
+    border-color: darkblue;
+  }
+ 
+  
+/* publish button css */
+
+.publish-button{
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(95, 115, 216);
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.publish-button:hover{
+    background-color: rgb(82, 106, 222);
+}
+
+.button{
+    text-align: center;
+}

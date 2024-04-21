@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #032da0; /* Blue-black background color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    color: #f3f8f7; /* Light color for text */
+    padding: 10px 20px; /* Padding for the navbar */
+  }
+  
+  .navbar a {
+    color: #ffffff; /* Light color for links */
+    text-decoration: none; /* Remove underline from links */
+    margin-right: 20px; /* Margin between links */
+  }
+  
+  .navbar a:hover {
+    color: #64ffda; /* Change link text color on hover */
+  }
+   
+  .navbar-logo {
+    font-size: 20px; /* Larger font size for the logo */
+  }
+  
+  .sidebar-toggle {
+    background: none; /* Remove button background */
+    border: none; /* Remove button border */
+    color: #fff; /* Light color for button text */
+    font-size: 20px; /* Larger font size for the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+    

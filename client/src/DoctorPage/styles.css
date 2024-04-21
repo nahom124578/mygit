@@ -1,0 +1,56 @@
+/* Reset default margin, padding, and font for the body */
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Arial, sans-serif; /* Set font family */
+    background-color: white; /* Set background color to white */
+}
+/* Styling for header content within navigation bar */
+.header-content1 {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    padding: 0 20px; /* Add padding */
+}
+
+/* Styling for home and profile links */
+.home-link1, .profile-link1 {
+    color: white; /* Set text color */
+    text-decoration: none; /* Remove default underline */
+    padding: 10px; /* Add padding */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+/* Hover and active states for home and profile links */
+.home-link1:hover, .profile-link1:hover,
+.home-link1:active, .profile-link1:active {
+    background-color: rgb(139, 139, 139); /* Change background color */
+}
+
+/* Styling for container holding patient information */
+.container1 {
+    margin-top: 20px; /* Add margin to the top */
+}
+
+/* Styling for the table displaying patient information */
+.patient-info1 table {
+    width: 100%; /* Make table full width */
+    border-collapse: collapse; /* Collapse table borders */
+}
+
+/* Styling for table headers and cells */
+.patient-info1 th, .patient-info td {
+    border: 1px solid #ddd; /* Add border */
+    padding: 8px; /* Add padding */
+    text-align: left; /* Align text to the left */
+}
+
+/* Styling for table headers */
+.patient-info1 th {
+    background-color: #f2f2f2; /* Set background color */
+}
+
+/* Styling for even rows in the table */
+.patient-info1 tr:nth-child(even) {
+    background-color: #f2f2f2; /* Set background color */
+}

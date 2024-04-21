@@ -1,0 +1,42 @@
+.item{
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 60px;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid gray;
+}
+.item h1{
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+.petientinfo{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.center{
+    margin-top: -40px;
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+.buttom{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

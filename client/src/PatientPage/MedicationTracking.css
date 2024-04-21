@@ -1,0 +1,229 @@
+.contain {
+    width: 100%;
+  }
+  
+  .internal-container {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    width: 100%;
+  }
+  
+  .internal-container .video-section {
+    background-image: url("../images/medication.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  
+  .internal-container .video-section h1 {
+    font-weight: 400;
+    font-size: 50px;
+    margin: 60px;
+  }
+  
+  .internal-container .diseases {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 30px;
+    display: flex;
+    flex: 1;
+  }
+  .internal-container .diseases #search-by-letter {
+    min-width: 50%;
+  }
+  
+  .internal-container .diseases #search-by-letter #message {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 30px;
+  }
+  
+  .internal-container .diseases #letters {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  }
+  
+  .internal-container .diseases #search-by-letter #letters span {
+    border: rgb(153, 218, 224) solid;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .internal-container .diseases #search-by-name {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 50px;
+  }
+  
+  .internal-container .diseases #search-by-name h1 {
+    font-weight: 400;
+    font-size: 30px;
+  }
+  .internal-container .diseases #search-by-name input {
+    margin-top: 10px;
+    border: rgb(152, 214, 205) solid;
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-radius: 40px;
+  }
+  
+  /* doctors care css */
+  
+  .internal-container .feeling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    width: 100%;
+  }
+  
+  .internal-container .feeling h1,
+  .medicine h1 {
+    font-weight: bold;
+    color: #000;
+    font-size: 50px;
+  }
+  
+  .internal-container .medicine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+  }
+  
+  /* buttons */
+  
+  .internal-container .feeling button,
+  .medicine button {
+    background-color: rgb(93, 93, 237);
+    border-radius: 25px;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+  }
+  
+  /* progress form */
+  
+  #form input[type="text"],
+  #form input[type="textarea"] {
+    font-size: 20px; /* Adjust the font size as needed */
+    padding: 8px; /* Adjust as needed */
+    width: 100%; /* Make input fill the available space */
+    height: 100px; /* Adjust the height of the textarea */
+  }
+  
+  .popup button {
+    background-color: rgb(151, 215, 215);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+  }
+  
+  #form #progress {
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    border-color: rgb(151, 215, 215);
+  }
+  
+  .popup #heading {
+    font-weight: bold;
+    font-size: 50px;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: rgb(151, 215, 215) solid;
+  }
+  
+  .popup h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin: 20px;
+  }
+  
+  .popup h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px;
+  }
+  
+  .popup #doctorHeading {
+    font-weight: bold;
+    font-size: 50px;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: rgb(151, 215, 215) solid;
+  }
+  
+  /* popup */
+  
+  .popup {
+    max-width: 50%;
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3);
+    padding: 0 30px 30px;
+    color: #333;
+    border: rgb(137, 108, 108) solid;
+    border-radius: 30px;
+    opacity: 0; /* Initially transparent */
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    opacity: 0; /* Initially transparent */
+    visibility: hidden; /* Initially hidden */
+    /* transition: opacity 0.5s ease, visibility 0.5s ease; Transition for fade effect */
+  }
+  
+  .popup.show {
+    opacity: 1;
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.5s ease-in-out;
+  }
+  
+  .overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  

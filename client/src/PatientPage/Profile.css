@@ -1,0 +1,53 @@
+
+.pro{
+    
+    background: url("https://wallpapers.com/images/featured/doctor-background-lenymxef6pkzfcjq.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+}
+
+.profile{
+   margin:70px auto;
+   
+    background-color: rgba(52, 52, 53, 0.76);
+    width: 60%;
+    
+
+    display: grid;
+    grid-template-columns: auto auto;
+    padding:10px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.859);
+    
+}
+.photo{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    gap:20px;
+    padding:10px; 
+}
+.photo img{
+    border-radius: 10px;
+}
+.photo label{
+    background-color: rgb(55, 66, 82);
+    padding: 5px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.info{
+    display:flex;
+    flex-direction: column;
+    gap:18px;
+}
+.info h2{
+    text-decoration: underline;
+}
+#input-file {
+    display:none;
+}

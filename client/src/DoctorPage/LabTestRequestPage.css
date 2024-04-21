@@ -1,0 +1,62 @@
+/* LabTestRequestPage.css */
+h1 {
+  color: rgb(13, 10, 156);
+  padding-left: 600px;
+}
+.lab-test-request-page2 {
+  background-image: url("../images/lab.jpeg");
+  padding: 40px;
+
+  background-size: 95%;
+}
+
+.form-container2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-left2,
+.form-right2 {
+  width: 38%;
+  background: none;
+  cursor: pointer;
+}
+.form-left2:hover,
+.form-right2:hover {
+  transform: scale(1.05);
+}
+
+.form-group2 {
+  font-size: x-large;
+  font: bolder;
+  margin-bottom: 20px;
+  color: #0f110f;
+}
+
+label {
+  padding: 10px;
+  display: block;
+  margin-bottom: 5px;
+  background: none;
+}
+
+input2,
+select2 {
+  width: 100%;
+  padding: 10px;
+  border: 5px solid #5f13eb;
+  border-radius: 5px;
+}
+
+button.submit-button2 {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.submit-button:hover {
+  background-color: #0056b3;
+}

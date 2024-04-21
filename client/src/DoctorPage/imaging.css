@@ -1,0 +1,88 @@
+/* Styles for header content */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Add padding */
+}
+
+/* Styles for home link */
+.home-link {
+  color: white; /* Set text color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 0 10px 10px; /* Padding for home link */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Styles for home link hover and active states */
+.home-link:hover,
+.home-link:active {
+  background-color: rgb(139, 139, 139); /* Change background color on hover and active */
+}
+
+/* Styles for profile link */
+.profile-link {
+  color: white; /* Set text color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 10px 10px 0; /* Padding for profile link */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Styles for profile link hover and active states */
+.profile-link:hover,
+.profile-link:active {
+  background-color: rgb(139, 139, 139); /* Change background color on hover and active */
+}
+
+/* Styles for main container */
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; /* Add margin */
+}
+
+/* Styles for left and right columns */
+.left-column, .right-column {
+  flex: 1; /* Take equal space */
+}
+
+/* Styles for form */
+form {
+  padding: 20px; /* Add padding */
+  background-color: #f9f9f9; /* Set background color */
+  border-radius: 8px; /* Add border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+/* Styles for labels */
+label {
+  display: block;
+  margin-bottom: 5px; /* Add margin */
+}
+
+/* Styles for input fields, select, and textarea */
+input[type="text"],
+select,
+textarea {
+  width: calc(100% - 40px); /* Adjust width */
+  padding: 8px; /* Add padding */
+  margin-bottom: 10px; /* Add margin */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 4px; /* Add border radius */
+  box-sizing: border-box; /* Adjust box sizing */
+}
+
+/* Styles for submit button */
+input[type="submit"] {
+  background-color: rgb(45, 61, 76); /* Set background color */
+  color: white; /* Set text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  cursor: pointer; /* Add pointer cursor */
+  border-radius: 4px; /* Add border radius */
+}
+
+/* Styles for submit button hover state */
+input[type="submit"]:hover {
+  background-color: rgb(35, 51, 66); /* Change background color on hover */
+}

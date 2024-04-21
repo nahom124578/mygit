@@ -1,0 +1,44 @@
+.createButton{
+    display: inline;
+    align-items: center;
+
+}
+.removeButton{
+    display: inline;
+    align-items: center;
+
+}
+.buttons{
+    text-align: center;
+}
+.creat-button{
+ background-color: rgba(84, 147, 84, 0.831);
+ border: 1px none ;
+ border-radius: 5px;
+ padding: 10px;
+ margin: 10px;
+ text-align: center;
+ display: inline-block;
+ font-size: 1.2em;
+ cursor: pointer;
+ width: 200px;
+ align-items: center;
+
+
+}
+
+.remove-button{
+ background-color: rgba(139, 48, 48, 0.735);
+ border: 1px none ;
+ border-radius: 5px;
+ padding: 10px;
+ margin: 10px;
+ text-align: center;
+ font-size: 1.2em;
+ cursor: pointer;
+ width: 200px;
+ align-items: center;
+
+
+}
+

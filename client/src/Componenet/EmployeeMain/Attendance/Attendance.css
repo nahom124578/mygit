@@ -1,0 +1,59 @@
+/* EmployeeDetail.css */
+
+.employeeDetail {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px; 
+    align-items: center;
+  }
+  
+  .employeeDetail-img {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .Employee-display {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .employee-info {
+    margin-bottom: 20px;
+  }
+  
+  .employee-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+ 
+  
+  
+  .employee-attendance {
+    margin-top: 20px;
+  }
+  
+  .employee-attendance label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .employee-attendance button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .employee-attendance button:hover {
+    background-color: #0056b3;
+  }
+  

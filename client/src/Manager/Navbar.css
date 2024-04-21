@@ -1,0 +1,54 @@
+/* Navbar Component CSS */
+
+.navbar {
+    background-image: linear-gradient(to right, #4299e1, #667eea);
+  }
+  
+  .navbar-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo-icon {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .navbar-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-link {
+    color: #ffffff;
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: #cbd5e0;
+  }
+  

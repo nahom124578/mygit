@@ -1,0 +1,45 @@
+.employee-each {
+    width: 350px;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure child elements don't overflow */
+    padding: 30px;
+    align-items: center;
+}
+
+.employee-each img {
+    width: 330px; /* Ensure image takes full width of container */
+    height: 300px; /* Maintain aspect ratio */
+    display: block; /* Remove any default inline display */
+    border-radius: 10px 10px 0 0; /* Rounded corners only on top */
+    
+}
+.employee-each h1{
+    text-align: center;
+    padding-left: -30px;
+}
+
+
+
+
+
+.employ-name {
+    display: flex;
+    justify-content: space-between; /* Align price elements on opposite ends */
+    align-items: center; /* Align vertically */
+    margin-top: 10px; /* Add margin to separate from other content */
+    margin-left: 150px;
+}
+
+.employ-name{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(100, 96, 96);
+}
+
+.employee-each:hover {
+    transform: scale(1.05);
+    transition: transform 0.6s; /* Apply transition only to transform property */
+}

@@ -1,0 +1,77 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 20px;
+   
+}
+
+.home-content {
+    background-image: linear-gradient(to right, #4299e1, #667eea);
+    padding: 3rem 0;
+}
+
+.home-inner-container {
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    margin-left: 100px;
+    padding: 0 20px; /* Added some padding for content */
+  
+}
+
+.home-titleM {
+   
+    color: #ffffff;
+    font-size: 2.25rem;
+    font-weight: bold;
+    /* text-align: center; */
+    margin-bottom: 1rem;
+    margin-top: 20px;
+    
+
+ 
+  
+
+}
+.home-subtitle {
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Content Box */
+.home-content-box {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.home-content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.home-content-box:hover .home-link-text {
+    color: #2c5282;
+}
+
+.home-content-box .home-link-text {
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+    color: #4a5568;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

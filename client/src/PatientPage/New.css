@@ -1,0 +1,85 @@
+
+.new-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.name-input {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.name-input input {
+    margin-right: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 400px;
+    border: 5px;
+    border: 1px solid gray;
+    height: 50px;
+}
+.name-input input:hover, .name-input input.active {
+    box-shadow: 0 0 5px 0 rgba(0, 255, 187, 0.3);
+}
+.name-input select {
+    margin-right: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 400px;
+    border: 5px;
+    border: 1px solid gray;
+    height: 50px;
+}
+#date:hover, #date.active {
+    box-shadow: 0 0 5px 0 rgba(0, 255, 187, 0.3);
+}
+#dropdown:hover, #dropdown.active {
+    box-shadow: 0 0 5px 0 rgba(0, 255, 187, 0.3);
+}
+.address {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.address input {
+    margin: 20px 0px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 500px;
+    border: 5px;
+    border: 1px solid gray;
+    height: 50px;
+}
+.check {
+    margin-bottom:10px;
+}
+.address input:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 255, 187, 0.3);
+}
+.check label{
+    margin: 10px;
+}
+.but-cont {
+    text-align: center;
+}
+.new-cancel {
+    color: white;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgb(11, 177, 20);
+    padding: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 100px;
+    cursor: pointer;
+}
+.new-cancel:hover {
+    background-color: rgb(9, 153, 9);
+    box-shadow: 1px 1px 1px rgb(175, 170, 170);
+}

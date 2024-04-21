@@ -1,0 +1,417 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Nav bar styling */
+.navbar {
+  /* align-items: center; */
+  background-color: rgb(45, 61, 76);    
+  color: #fff;
+  padding: 0px;
+  
+}
+
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+ 
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  align-items:end;
+    display: flex;
+    justify-content: space-around;
+    width: 25%;
+    transition: background-color 0.3s ease;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: normal;
+    padding: 20px 20px;
+
+}
+
+.navbar ul li:hover {
+    background-color:rgb(230, 126, 34);
+    color: #867;
+    padding: 10px, 15px;
+    border-radius: 2px;
+}
+
+.navbar ul li:focus {
+  background-color:rgb(255, 120, 2);
+  color: #867;
+  padding: 10px, 15px;
+  border-radius: 2px;
+}
+
+
+/*Upper component styling*/
+.upperComponents {
+    display: flex;
+    width: 100%;
+}
+
+
+/*Left side content*/
+.left-content {
+    display: inline-clock;
+    width: 70%;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*Right content*/
+
+.animation-container {
+    width: 30%;
+    display: inline-block;
+    margin: 0px;
+    padding: 30px;   
+}
+  
+
+
+/* Content Archive Title styling */
+
+.header-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    height: 100px; /* Adjust height as needed */
+    background-color: #fff; /* Example background color */
+  }
+  
+  .header-title {
+    font-size: 48px; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #333; /* Set the text color */
+    text-align: left; /* Center-align the text */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 1px; /* Add letter spacing for emphasis */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow for depth */
+  }
+  
+  /* Example hover effect */
+  .header-title:hover {
+    color: #222; /* Change text color on hover */
+  }
+
+/* Search bar styling */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  width: 30%; /* Adjust width of filter containers */
+}
+
+.filter label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background-color: #f9f9f9; /* Lighter background color */
+  transition: all 0.3s ease;
+}
+
+
+
+.filter-input:hover,
+.filter-input:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the dropdown options */
+.filter-input option {
+  padding: 10px; /* Add padding to create spacing around each option */
+}
+
+/* Hover effect on dropdown options */
+.filter-input option:hover {
+  background-color: #007bff; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+
+
+
+/*Right content*/
+
+  .animation-gif {
+    max-width: 300px; /* Ensure GIF does not exceed container width */
+    max-height: 300px; 
+    animation: playOnce 1s linear forwards; /* Define the playOnce animation */
+  }
+  
+  @keyframes playOnce {
+    from {
+      opacity: 0; /* Start with opacity 0 */
+    }
+    to {
+      opacity: 1; /* Transition to opacity 1 */
+    }
+  }
+
+
+  /*Search Results Styling*/
+  .search-results-container {
+    width: 70%;
+    margin: 0 auto; /* Center the component horizontally */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    
+    /* Adjust the margin to shift the component to the left */
+    margin-left: 5%; /* Example: 5% margin on the left side */
+  }
+  
+  .search-results-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .search-results-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next row */
+    justify-content: space-between; /* Distribute items evenly */
+  }
+  
+  .search-result-item {
+    width: calc(50% - 20px); /* Two items per row with spacing */
+    height: 250px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .search-result-item h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    display: -webkit-box;  /* Enable line clamping (WebKit browsers) */
+    -webkit-line-clamp: 2;   /* Set the number of lines to show */
+    -webkit-box-orient: vertical;   /* Display text vertically */
+    overflow: hidden;      /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  .search-result-item p {
+    color: #666;
+    font-size: 14px;
+    display: -webkit-box;  /* Enable line clamping (WebKit browsers) */
+    -webkit-line-clamp: 5;   /* Set the number of lines to show */
+    -webkit-box-orient: vertical;   /* Display text vertically */
+    overflow: hidden;      /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+
+  /* Additions for Search Results Styling */
+.result-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.result-date,
+.result-audience,
+.result-type {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5); /* Set opacity for date and type */
+  opacity: 0.8; /* Adjust opacity level */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+}
+
+/* Cursor style for clickable result items */
+.search-result-item {
+  cursor: pointer;
+}
+
+/* Hover effect for clickable result items */
+.search-result-item:hover {
+  background-color: #e0e0e0; /* Change background color on hover */
+}
+
+/* Styles for pop-up overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure pop-up is on top of other content */
+}
+
+/* Styles for pop-up content */
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 50%;
+  min-height: 50%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+/* Styles for pop-up buttons */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-buttons button:first-child {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.popup-buttons button:nth-child(2) {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.popup-buttons button:last-child {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.popup-buttons button:hover {
+  opacity: 0.8;
+}
+
+
+
+  
+  /*Footer Section Styling*/
+
+  .footer {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 30px 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-section {
+    flex-basis: 25%; /* Each section occupies 25% of the footer width */
+  }
+  
+  .footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .contact-info, .quick-links, .social-links, .site-map {
+    font-size: 14px;
+  }
+  
+  .icon {
+    margin-right: 8px;
+  }
+  
+  .quick-links, .site-map {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .quick-links li, .site-map li {
+    margin-bottom: 8px;
+  }
+  
+  .quick-links li a, .site-map li a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .social-links li {
+    margin-right: 8px;
+  }
+  
+  .social-links a {
+    color: #ffffff;
+    font-size: 18px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+  }
+ 

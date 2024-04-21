@@ -1,0 +1,44 @@
+.employeeDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Align items side by side */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.employeeDetail-img {
+    flex: 0 0 45%; 
+    margin-top: 100px;
+    padding-left: 100px; 
+    align-items: center;
+    text-align: center;
+}
+
+.employeeDetail-img img {
+    width: 350px; /* Ensure image does not exceed container width */
+    height: 300px; /* Maintain aspect ratio */
+    border-radius: 10px;
+  
+}
+.employeeDetail-img h1{
+    text-align: center;
+    margin-left: -150px;
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+}
+sp/src/Componenet/EmployeeMain/EmployeeDetail/EmployeeDetail.css
+.Employee-display {
+    margin-top: 50px;
+    flex: 0 0 50%; /* Set width for form container */
+    padding-left: -220px; /* Add padding to separate from image */
+}
+.attendance{
+    margin: 70px;
+    background-color: bisque;
+    color: black;
+    font: 30px;
+    margin-left: -100px;
+}
+
+

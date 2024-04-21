@@ -1,0 +1,74 @@
+.medical-record-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+.record-title {
+  text-align: center;
+  color: rgb(45, 61, 76);
+  margin-bottom: 20px;
+}
+.bull{
+  margin-top:250px;
+}
+
+.toggle-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: rgb(45, 61, 76);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+  background-color: rgb(35, 51, 66);
+}
+
+.result-title {
+  color: rgb(45, 61, 76);
+  margin-top: 30px;
+}
+
+.result-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.result-item {
+  margin-bottom: 20px;
+}
+
+.result-label {
+  font-weight: bold;
+  color: rgb(45, 61, 76);
+}
+
+.line-break {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.result-textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: "Arial", sans-serif;
+}
+
+.result-textarea[readOnly] {
+  background-color: #f4f4f4;
+  color: #333;
+}

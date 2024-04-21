@@ -1,0 +1,27 @@
+.Navbar {
+    background-color: rgb(12, 12, 74);
+    color: white;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.hospitalName{
+    font-size: 2.5em;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.Navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 20px 20px;
+    font-size: 1.25em;
+
+}
+  
+.Navbar a:hover {
+    background-color: rgba(13, 13, 53, 0.909);
+    border-radius: 5px;
+}
+  

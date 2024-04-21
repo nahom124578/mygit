@@ -1,0 +1,48 @@
+/* Navbar */
+.navbar {
+   position: fixed;
+    background-color: #1a202c; /* Dark background color */
+    color: #d1d5db; /* Text color */
+    padding: 1rem 0; /* Padding */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    z-index: 9;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Spacing between navbar items */
+    
+  }
+  
+  .navbar-item {
+    color: #d1d5db; /* Text color */
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Padding */
+    border-radius: 0.25rem; /* Border radius */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .navbar-item:hover {
+    background-color: #686e75; /* Hover background color */
+  }
+  
+  .navbar-icon {
+    margin-right: 0.5rem; /* Margin */
+  }
+  /* Login Link */
+.login-link {
+    background-color: #4a90e2; /* Blue background color */
+    color: #ffffff; /* White text color */
+    padding: 0.5rem 1rem; /* Padding */
+    border-radius: 0.25rem; /* Border radius */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .login-link:hover {
+    background-color: #357ab8; /* Darker blue background color on hover */
+  }

@@ -1,0 +1,243 @@
+
+/* feedback for */
+
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.feedback-form {
+  max-width: 60%;
+  min-width: 60%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.feedback-form #heading {
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  border-bottom: #4560a0 solid;
+}
+
+.feedback-form #heading h1 {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.feedback-form #heading h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feedback-form #tables {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.LABEL {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+#department {
+  padding: 5px;
+  padding-right: 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #4c96afb3;
+  margin-right: 10px;
+}
+
+#form {
+  margin-top: 50px;
+}
+
+#suggestion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+#suggestion h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#improvement {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding: 8px;
+  border: #45a049;
+  border-radius: 20px;
+  background-color: #ccd4dc6c;
+  color: rgb(43, 36, 36);
+  font-size: 20px;
+}
+
+.mybut {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  display: block; /* Ensures the button takes up the full width */
+  
+  text-align: center;
+  
+  margin-bottom: 50px;
+}
+
+.container-p-tag {
+  position: relative;
+  top: 60px;
+  font-size: 25px;
+  color: black;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 40px;
+}
+
+.cont-span {
+  background-color: #e8f9e9;
+  font-size: 18px;
+}
+.cont-span:hover {
+  background-color: rgb(139, 139, 139);
+  color: black;
+}
+
+#department:hover {
+  background-color: rgb(45, 61, 76);
+  color: white;
+}
+
+#overall {
+  position: relative;
+  top: 100px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  left: 40px;
+}
+
+#overall:hover {
+  background-color: rgb(45, 61, 76);
+}
+
+.feedback-table {
+  width: 80%;
+  border-collapse: collapse;
+  font-size: 18px;
+  margin: 0 auto;
+}
+#head tr,
+th {
+  font-size: 25px;
+}
+
+.feedback-table th,
+.feedback-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+  height: 40px;
+}
+
+.feedback-table th {
+  background-color: #f2f2f2;
+}
+
+.feedback-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.feedback-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+.feedback-table input[type="radio"] {
+  margin-right: 5px;
+}
+.feedback-table input[type="radio"] {
+  margin: 0 5px;
+}
+
+.feedback-table input[type="radio"]:checked {
+  background-color: #007bff;
+  color: white;
+}
+.feedback-table th,
+.feedback-table td {
+  text-align: center;
+}
+
+.feedback-table input[type="radio"] {
+  transform: scale(1.5);
+}
+
+.mybut:hover {
+  background-color: #4560a0;
+}
+.thank-you-message {
+  height: inherit;
+  bottom: 320px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.thank-you-message button {
+  height: 50px;
+  width: 100px;
+
+  position: relative;
+  top: 20px;
+}
+
+/* popup */
+
+.popup {
+  max-width: 50%;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.3);
+  padding: 0 30px 30px;
+  color: #333;
+  border: rgb(137, 108, 108) solid;
+  border-radius: 30px;
+  opacity: 0; /* Initially transparent */
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  opacity: 1; /* Initially transparent */
+  /* transition: opacity 0.5s ease, visibility 0.5s ease; Transition for fade effect */
+}

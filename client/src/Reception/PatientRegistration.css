@@ -1,0 +1,54 @@
+.registration-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #d4c1c1;
+  }.body{
+  margin-top: 0px;}
+  
+  .registration-heading {
+    text-align: center;
+    color: #333;
+  }
+  
+  .personal-information,
+  .contact-information,
+  .emergency-contact,
+  .insurance-information,
+  .medical-history,
+  .reason-for-visit,
+  .legal-consent-information {
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    margin-bottom: 10px;
+  }
+  
+  input[type='text'],
+  input[type='date'],
+  input[type='email'],
+  input[type='tel'],
+  textarea,
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

@@ -1,0 +1,78 @@
+.profile-adm {
+    margin: 100px auto; /* Center the profile section horizontally */
+    background-color: beige;
+    color: black;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    padding: 100px; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.profile-head {
+    height: 40px;
+    font-size: 20px;
+    width: 100%;
+    background-color: blueviolet;
+    text-align: left;
+    padding-left: 20px; /* Reduce left padding for better alignment */
+    border-top-left-radius: 10px; /* Add rounded corners to the top left and right of the header */
+    border-top-right-radius: 10px;
+    margin-bottom: 10px;
+ /* Add margin to separate the header from the content */
+}
+.profile-head h1{
+    margin-top: -12px;
+}
+
+.profile-detail {
+    display: flex;
+    justify-content: space-around; 
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.admi-img {
+    height: 300px; /* Fixed height for the container */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.admi-img img {
+    width: auto; /* Allow the width to adjust based on the height */
+    height: 250px; /* Make sure the image takes full height of the container */
+    width: 250px; /* Ensure the image does not exceed the container width */
+    object-fit: contain; /* Maintain aspect ratio and fit the entire image within the container */
+    border-radius: 10px;
+}
+
+.admi-img button{
+    width: 70%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+.detail-adm {
+    font-size: 20px; /* Reduce font size for better readability */
+    padding: 10px; /* Adjust padding for better spacing */
+    background-color: white;
+    border-radius: 10px; /* Add rounded corners to the detail section */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    margin-bottom: 20px; /* Add margin to separate details from each other */
+}
+
+.detail-adm h1 {
+    margin: 0; /* Remove default margin for better alignment */
+    font-size: 24px; /* Increase font size for prominence */
+    color: blueviolet; /* Match the color with the header */
+}
+
+

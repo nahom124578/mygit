@@ -1,0 +1,40 @@
+.sidebar {
+    width: 250px; /* Set the width of the sidebar */
+    background-color: #043680; /* Blue background color */
+    color: #f8f9fa; /* Light color for text */
+    height: 100%; /* Full height */
+    position: fixed; /* Fixed position */
+    top: 40px; /* Align below the navbar */
+    left: 0; /* Align to left of the page */
+    overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 1; /* Ensure sidebar is above content */
+  }
+  
+  .sidebar-header {
+    padding: 20px; /* Padding for the header */
+    font-size: 30px; /* Larger font size for the header */
+    font-weight: bold; /* Bold font weight */
+    font-style: inherit;
+    background-color: rgb(182, 224, 235);
+    color: #5e0156;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none; /* Remove bullet points */
+    padding: 20px; /* Remove default padding */
+    font-size: larger;
+  }
+  
+  .sidebar-menu li {
+    padding: 10px 20px; /* Padding for each menu item */
+  }
+  
+  .sidebar-menu li a {
+    color: #f8f9fa; /* Light color for links */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  .sidebar-menu li a:hover {
+    color: #64ffda; /* Change link text color on hover */
+  }
+  

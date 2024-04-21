@@ -1,0 +1,51 @@
+.hospital-info {
+  cursor: pointer;
+  transition: cubic-bezier();
+  margin-left: 250px;
+  padding: 30px;
+  background-image: url("../images/iStock-1165067633.jpg.webp");
+  background-size: cover;
+  color: #e90e0e;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #034463;
+  text-align: center;
+  min-width: fit-content;
+  font-size: 40px;
+}
+
+.hospital-info:hover {
+  transform: scale(1.05);
+}
+
+.doctor-section {
+  margin-left: 250px;
+  padding: 20px;
+  background-image: url("../images/istockphoto-1198085619-1024x1024.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #e90909;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-column {
+  width: 35%;
+  height: 200%;
+}
+
+.action-button {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: #fffdd1;
+  color: #0d2cb8;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #ccc;
+}
