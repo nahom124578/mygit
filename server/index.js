@@ -7,6 +7,7 @@ const appkida= require('./Backend_Appointment/appkida');
 const feed = require('./Feedback/feed')
 const human_res =require('./The_Manager/human-res')
 const Router = require('./router/Router')
+const server = require('./server');
 
 
 const cors = require('cors');
@@ -29,10 +30,11 @@ app.use(bodyParser.json());
 // Routes
 app.use('/', labProcessRoutes);
 app.use('/api', logins);
-app.use('/',feed)
+app.use('/api',feed)
 app.use('/api', appkida);
 app.use('/', human_res);
 app.use('/', Router);
+app.use('/',server)
 
 
 // Start the server

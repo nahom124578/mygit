@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors')
-const financeController = require('../controllers/controllers')
+const financeController = require('../controllers1/controllers')
 
 
 const router= express();
