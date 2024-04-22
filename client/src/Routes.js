@@ -4,10 +4,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Login from './Login';
 
 import HomePage from "./main-page/Home-page.js";
+
 import NavBar from "./main-page/NavBar";
 // import Signup from './Signup';
-import Login from './Login/login.js';
-import Signup from './Login/Signup';
+import Signup from './Login/Authentication/Signup';
+import Login from './Login/Authentication/Login';
+import ForgotPassword from './Login/Authentication/ForgotPassword';
+import VerifyOtp from './Login/Authentication/VeifyOtp';
+import ChangePassword from './Login/Authentication/ChangePassword';
+import Home from './Login/Temp/SampleHome';
+import PatientDashboard from './Login/Temp/SamplePatientDashboard';
+import DoctorDashboard from './Login/Temp/SampleDoctorDashboard';
+// import Loginapp from './Login/Login/Loginapp.js';
+// import Signup from './Login/Signup.js';
 
 import Feedback from './PatientPage/Feedback';
 import Patient from './PatientPage/PatientPage';
@@ -88,8 +97,16 @@ function Routess() {
             <BrowserRouter>
                 {/* <NavBar /> */}
                 <Routes>
+                <Route path="/loginapp" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path='/forgotPassword' element={<ForgotPassword />} />
+                <Route path='/verifyOtp' element={<VerifyOtp/>} />
+                <Route path='/changePassword' element={<ChangePassword />} />
+                <Route path="/dashboard/patient" element={<PatientDashboard />} />
+                <Route path="/dashboard/doctor" element={<DoctorDashboard />} />
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login />} />
+                   
                     <Route path="/signup" element={<Signup />} />
                     {/* <Route path="/dashboard" element={<Dashboard />} /> */}
                     <Route path="/patient" element={<Patient />} />
