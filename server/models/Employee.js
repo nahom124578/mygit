@@ -59,7 +59,7 @@ const feedbackSchema = new mongoose.Schema({
           require: true,
         },
       });
-      const Hiremploye = mongoose.Schema({
+      const Hiremploye = new mongoose.Schema({
         firstName: {
           type: String,
           require: true,
@@ -157,7 +157,7 @@ const feedbackSchema = new mongoose.Schema({
       });
       
       const User = mongoose.model("User", schema); // this is intended to create a collection in database ....
-      const Employe = mongoose.model("employees", Hiremploye);
+      const employes_list = mongoose.model("employes_list", Hiremploye);
       const vacancyRecord = mongoose.model("VacancyRecord", Vacancy);
 
     
@@ -170,6 +170,6 @@ module.exports = EmployeeModel;
 module.exports = LabProcess;
 module.exports = Feedback;
 module.exports =  User;
-module.exports =Employe;
+module.exports =employes_list;
 module.exports =vacancyRecord;
       
