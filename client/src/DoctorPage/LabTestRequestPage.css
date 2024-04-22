@@ -5,14 +5,16 @@ h1 {
 }
 .lab-test-request-page2 {
   background-image: url("../images/lab.jpeg");
-  padding: 40px;
+  padding: 60px;
+  padding-top: 20px;
 
-  background-size: 95%;
+  background-size: cover;
 }
 
 .form-container2 {
   display: flex;
   justify-content: space-between;
+  height: 50%;
 }
 
 .form-left2,
@@ -26,10 +28,11 @@ h1 {
   transform: scale(1.05);
 }
 
-.form-group2 {
-  font-size: x-large;
+.form-group2  label{
+  margin-bottom: 2px;
+  font-size: 1.5em;
   font: bolder;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
   color: #0f110f;
 }
 
@@ -40,8 +43,8 @@ label {
   background: none;
 }
 
-input2,
-select2 {
+.input2,
+.select2 {
   width: 100%;
   padding: 10px;
   border: 5px solid #5f13eb;
@@ -59,4 +62,9 @@ button.submit-button2 {
 
 button.submit-button:hover {
   background-color: #0056b3;
+}
+
+
+.input-label{
+  height: 50px;
 }
