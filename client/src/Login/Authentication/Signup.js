@@ -64,7 +64,7 @@ const Signup = () => {
         event.preventDefault();
         if (validate()) {
             try {
-                const response = await axios.post('/Signup', formData);
+                const response = await axios.post('http://localhost:3001/api/signup', formData);
                 const role = response.data.role;
                 const roleUrl = `/dashboard/${role}`;
                 navigate(roleUrl); 
