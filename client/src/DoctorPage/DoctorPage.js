@@ -21,7 +21,7 @@ const DoctorPage = () => {
           <Link to="/LabTestRequestPage">
             <button className="action-button">Laboratory Request</button>
           </Link>
-          <Link to="/Medical">
+          <Link to="/imagingRequest">
             <button className="action-button">Imaging Request</button>
           </Link>
           <Link to="/PrescriptionFormPage">

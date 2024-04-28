@@ -1,6 +1,8 @@
 // Import React library and CSS file for styling
-import React, { useState } from 'react';
+import React from 'react';
 import './imaging.css';
+import { useState } from 'react';
+import axios from 'axios';
 
 // Define MedicalImagingRequest functional component
     const MedicalImagingRequest = () => {
@@ -11,13 +13,9 @@ import './imaging.css';
 
     const handleSubmit = async(e) => { 
         e.preventDefault(); // Prevent default form submission
-        await fetch('http://localhost:3001/api/doctor_image_request', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        })
+        await axios.post('http://localhost:3001/Doctor_image_request', formData)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
   }
 
 
