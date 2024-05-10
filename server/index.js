@@ -6,6 +6,7 @@ const app = express();
 const cors = require('cors');
 const UserModel = require('./models/postInfo')
 const ImageModel = require('./models/imageReport')
+const ImageReqModel = require('./models/ImageRequest')
 const multer = require('multer') 
 const path = require('path')
 
@@ -154,6 +155,18 @@ app.delete('/api/deleteApp/:id', async(req, res) => {
     }
  })
 
+app.get('/api/imagingRequest', async(req, res) => {
+  try {
+    const result = await ImageReqModel.find({})
+    console.log(result)
+    res.send(result)
+    res.status(200)
+  } catch (err) {
+    console.log(err)
+    res.json(err)
+    res.status(500)
+  }
+})
 
 // Start the server
 const PORT = 3001;

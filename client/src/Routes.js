@@ -54,8 +54,8 @@ import Prescription from './DoctorPage/PrescriptionFormPage.js'
 import ReferralForm from './DoctorPage/ReferralForm.js'
 //LabTechincian 
 
-import LabTechnician from './LabTech/LabTechnician.js';
-import ResultReporting from './LabTech/ResultReporting.js';
+import LabTechnician from './LabTech/LabTechnician.jsx';
+import ResultReporting from './LabTech/ResultReporting.jsx';
 
 // Manager
  
