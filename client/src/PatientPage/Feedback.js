@@ -49,7 +49,7 @@ function Feedback() {
     };
 
     try {
-      const response = await fetch('http://localhost:3002/submit-feedback', {
+      const response = await fetch('http://localhost:3001/submit-feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -257,7 +257,7 @@ function Feedback() {
           </div>
 
           <div id="tables">
-            <dv id="selection">
+            <div id="selection">
               <form>
                 <label htmlFor="department" className="LABEL">
                   Choose a department:
@@ -298,7 +298,7 @@ function Feedback() {
                 <br />
                 <br />
               </form>
-            </dv>
+            </div>
 
             <div id="form">{true && OverAllform()}</div>
             <div id="suggestion">

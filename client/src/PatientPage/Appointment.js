@@ -1,12 +1,10 @@
 import './Appointment.css'
 import { NavLink, Outlet } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import Navbarp from './NavBarp';
 export default function Appointment() {
 
     const buttonClicked = localStorage.getItem('buttonClicked');
     return (
-        <> <Navbarp/>
+        <>
         <div className='main-app'>
             <div className="app-container  bg-blue-500 text-white px-4 py-2 rounded-lg">
                 <div className = "option-container  ">
