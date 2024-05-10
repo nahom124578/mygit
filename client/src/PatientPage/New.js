@@ -13,14 +13,14 @@ export default function New() {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:3003/api/posts", data)
+            const response = await axios.post("http://localhost:3001/api/posts", data)
             console.log(response)
             const newPostID = response.data.postId
             alert("Appointment successfully created with an ID: " + newPostID)
             setPostData({})
         }
         catch {
-            console.log("there was an erro sending the data")
+            console.log("there was an error sending the data")
         }
 
     }

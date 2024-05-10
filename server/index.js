@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 const Router = require('./router/Router')
 const app = express();
 const cors = require('cors');
+const UserModel = require('./model/postInfo')
+const ImageModel = require('./model/imageReport')
+const multer = require('multer') 
+const path = require('path')
+
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -65,6 +70,89 @@ app.post('/api/labresult', async (req, res) => {
 });
 
 
+
+//configuring the server disk storage for image storage and other files
+const storage = multer.diskStorage(
+  {
+    destination: (req, file, cb) => {
+      cb(null, './server/Public/images') //first parameter is an error
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+    }
+  }
+)
+
+const upload  = multer({
+  storage: storage
+})
+
+
+//for the radiologist image
+app.post('/api/uploadRadImage',upload.single('image'), async (req, res) => {
+  try {
+    const image = req.file
+    const imageUrl = `./server/Public/images/${image.filename}`
+
+    const newDetail = new ImageModel ({
+      image: imageUrl,
+      details: req.body.details
+    })
+
+    await newDetail.save()
+  }
+  catch(err) {
+    console.log(err)
+  }
+})
+
+
+// to update an appointment
+app.put('/api/updateApp/:upId', async (req, res) => {
+    const { upId } = req.params;
+    const updatedData = req.body;
+    console.log(updatedData)  
+
+    try {
+
+      const user = await UserModel.findByIdAndUpdate(upId, updatedData, { new: true }); 
+      console.log(user)
+      if (!user) {
+        console.log(upId)
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json({ message: 'User updated successfully', user });
+    } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).json({ message: 'Error updating user' });
+    }
+  });
+
+//to sChedule new appointments
+app.post('/api/posts', async(req, res) => {
+   try {
+    const AppDetail = new UserModel(req.body)
+    const newPost = await AppDetail.save()  
+    const newPostID = newPost._id
+    res.status(201).json({ message: 'Post created successfully', postId: newPostID });
+
+   }
+   catch {
+    console.log('Error posting the Appointment Detail')
+   }
+})
+
+//to delete an appointment
+app.delete('/api/deleteApp/:id', async(req, res) => {
+    const {id} = req.params
+    try {
+     await UserModel.findByIdAndDelete(id)
+     res.status(201).json({ message: 'Cancelled successfully'});
+    }
+    catch {
+     console.log('Document not found')
+    }
+ })
 
 
 // Start the server
