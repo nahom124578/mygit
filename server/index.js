@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Router = require('./router/Router')
 const app = express();
 const cors = require('cors');
-const UserModel = require('./model/postInfo')
-const ImageModel = require('./model/imageReport')
+const UserModel = require('./models/postInfo')
+const ImageModel = require('./models/imageReport')
 const multer = require('multer') 
 const path = require('path')
 
