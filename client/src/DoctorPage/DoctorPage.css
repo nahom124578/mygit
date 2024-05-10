@@ -21,10 +21,10 @@
   margin-left: 250px;
   padding: 20px;
   background-image: url("../images/istockphoto-1198085619-1024x1024.jpg");
-  background-size: cover;
+  background-size:contain;
   background-position: center;
   color: #e90909;
-  display: flex;
+  display:flex;
   justify-content: space-between;
 }
 
@@ -34,12 +34,13 @@
 }
 
 .action-button {
-  width: 100%;
+  width: 200%;
   margin-bottom: 20px;
   padding: 20px;
-  border: none;
-  border-radius: 12px;
+  border: 10px;
+  border-radius:12px;
   background-color: #fffdd1;
+  background-size:auto;
   color: #0d2cb8;
   font-size: 30px;
   font-weight: bold;

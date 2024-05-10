@@ -36,7 +36,7 @@ import MedicationTracking from './PatientPage/MedicationTracking.js';
 
 import PatientInformation from './DoctorPage/App1.js';
 import DoctorPage from './DoctorPage/DoctorPage.js';
-import LaboratoryRequest from './DoctorPage/LabTestRequestPage.js';
+import LaboratoryRequest from './DoctorPage/LabTestRequestPage .js';
 import ImagingRequest from './DoctorPage/MedicalImagingRequest';
 import Campaign from './Manager/Campaign';
 import Content from './Manager/Content';
