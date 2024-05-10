@@ -36,7 +36,7 @@ import MedicationTracking from './PatientPage/MedicationTracking.js';
 
 import PatientInformation from './DoctorPage/App1.js';
 import DoctorPage from './DoctorPage/DoctorPage.js';
-import LaboratoryRequest from './DoctorPage/LabTestRequestPage.js';
+import LaboratoryRequest from './DoctorPage/LabTestRequestPage .js';
 import ImagingRequest from './DoctorPage/MedicalImagingRequest';
 import Campaign from './Manager/Campaign';
 import Content from './Manager/Content';
@@ -54,8 +54,8 @@ import Prescription from './DoctorPage/PrescriptionFormPage.js'
 import ReferralForm from './DoctorPage/ReferralForm.js'
 //LabTechincian 
 
-import LabTechnician from './LabTech/LabTechnician.js';
-import ResultReporting from './LabTech/ResultReporting.js';
+import LabTechnician from './LabTech/LabTechnician.jsx';
+import ResultReporting from './LabTech/ResultReporting.jsx';
 
 // Manager
  
