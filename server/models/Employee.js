@@ -193,6 +193,20 @@ const feedbackSchema = new mongoose.Schema({
             required: true // ID is required
         }
     });
+    const requestSchema = new mongoose.Schema({
+      checked: Boolean, // Whether the request has been checked
+      patientName: String, // Name of the patient
+      patientID: String, // ID of the patient
+      doctorName: String, // Name of the doctor
+      doctorID: String, // ID of the doctor
+      labTestType: String, // Type of lab test requested
+      testDate: Date, // Date of the test
+      urgency: Boolean, // Whether the request is urgent
+  });
+  
+  // Create a Mongoose model based on the request schema
+  const requestModel = mongoose.model("LabRequest", requestSchema);
+  
     
     // Create a Mongoose model based on the schema
     const reportModel = mongoose.model("LabReport", reportSchema);
@@ -215,4 +229,5 @@ module.exports =  User;
 module.exports =employes_list;
 module.exports =vacancyRecord;
 module.exports = reportModel;
+module.exports= requestModel;
       
