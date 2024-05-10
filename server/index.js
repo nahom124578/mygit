@@ -8,7 +8,8 @@ const UserModel = require('./models/postInfo')
 const ImageModel = require('./models/imageReport')
 const multer = require('multer') 
 const path = require('path')
-
+const ImageReq = require("./models/imagings");
+const Patient = require("./models/patient");
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -22,6 +23,56 @@ mongoose.connect('mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1f
 // Middleware
 app.use(cors()); // Add this line to enable CORS
 app.use(bodyParser.json()); 
+//imaging
+
+// LOgicccc
+
+
+const listPatientController = async (req, res) => {
+  try {
+    const result = await Patient.find({}).exec();
+    res.status(200).json(result)
+  } catch (err) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
+
+
+
+
+
+const doctorImageRequestController = async (req, res) => {
+  try {
+    const NewDoctorImageRequest = new ImageReq({
+      patient_name: req.body.patient_name,
+      physician_name: req.body.physician_name,
+      physician_contact: req.body.physician_contact,
+      dob: req.body.dob,
+      gender: req.body.gender,
+      imaging_procedure: req.body.imaging_procedure,
+      clinical_indication: req.body.clinical_indication,
+      special_instructions: req.body.special_instructions,
+    });
+    await NewDoctorImageRequest.save();
+    res
+      .status(200)
+      .json({ message: "Imaging Request Saved Successfully successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Somthing Went Wrong!" });
+  }
+};
+
+
+
+
+app.post("/api/doctor_image_request", doctorImageRequestController);
+app.get("/api/list_patient", listPatientController);
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the Hospital Management System");
+});
 //lab request display
 app.put('/update/:id', async (req, res) => {
   try {
