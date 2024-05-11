@@ -9,7 +9,6 @@ const ImageModel = require('./models/imageReport')
 const ImageReqModel = require('./models/ImageRequest')
 const multer = require('multer') 
 const path = require('path')
-const ImageReq = require("./models/imagings");
 const Patient = require("./models/patient");
 
 // pharmacist, medicine model
@@ -28,9 +27,6 @@ mongoose.connect('mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1f
 app.use(cors()); // Add this line to enable CORS
 app.use(bodyParser.json()); 
 //imaging
-
-// LOgicccc
-
 
 const listPatientController = async (req, res) => {
   try {
@@ -77,6 +73,7 @@ app.get("/api/list_patient", listPatientController);
 app.get("/", (req, res) => {
   res.send("Welcome to the Hospital Management System");
 });
+
 //lab request display
 app.put('/update/:id', async (req, res) => {
   try {

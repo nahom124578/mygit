@@ -131,7 +131,7 @@ function Routess() {
 
                     <Route path="/App1" element={<PatientInformation></PatientInformation>} />
                     <Route path="/LabTestRequestPage" element={<LaboratoryRequest></LaboratoryRequest>} />
-                    <Route path="/Medical" element={<ImagingRequest></ImagingRequest>} />
+                    <Route path="/Medicalimagingrequest" element={<ImagingRequest></ImagingRequest>} />
                     <Route path="/PrescriptionFormPage" element={<Prescription></Prescription>} />
                     <Route path="/ReferralForm" element={<ReferralForm></ReferralForm> } />
                     <Route path='/labtechnnician' >

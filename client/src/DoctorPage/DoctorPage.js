@@ -21,7 +21,7 @@ const DoctorPage = () => {
           <div><Link to="/LabTestRequestPage">
             <button className="action-button">Laboratory Request</button>
           </Link></div>
-          <div><Link to="/Medical">
+          <div><Link to="/Medicalimagingrequest">
             <button className="action-button">Imaging Request</button>
           </Link></div>
           <div><Link to="/PrescriptionFormPage">
@@ -34,10 +34,10 @@ const DoctorPage = () => {
           
         </div>
         <div className="action-column">
-        <div><Link to="#">
+        <div><Link to="/laboratoryresult">
             <button className="action-button">Laboratory Result</button>
           </Link></div>
-        <div><Link to="#">
+        <div><Link to="/imagingresult">
             <button className="action-button">Imaging Result</button>
           </Link></div>
         <div><Link to="/ReferralForm">

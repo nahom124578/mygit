@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 // Create a medicine schema
 const medicineSchema = new mongoose.Schema({
     name: { type: String, required: true },
