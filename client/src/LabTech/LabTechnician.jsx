@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Link } from 'react';
 import './LabTechnician.css';
 import axios from 'axios';
+import ResultReporting from './ResultReporting';
 
 
 function LabTechnician(){
@@ -45,15 +46,22 @@ function LabTechnician(){
     return(
         <div className="main-element">
             <div className="labpage">
+            
                 <div className="announcement">
                     <h1 className='title1'>Announcement</h1>
                     <div className="element">
 
                     </div>
+                    
+                
+                   
+                    
                 </div>
                 <div className="todo-list">
                    <h1 className='title2'>To do list</h1>
+
                    <div className="list">
+                  
 
 
                         <ol >
@@ -79,7 +87,8 @@ function LabTechnician(){
                         
                     </div> 
                 </div>
-            </div>
+                
+        </div>
         </div>
     )
 }
