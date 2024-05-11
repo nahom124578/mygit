@@ -1,0 +1,53 @@
+
+
+
+/* Heading styles */
+/* .heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333333; 
+} */
+
+/* Form styles */
+.medicine-f11 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px; /* Limit form width */
+  background-color: #f5f5f5; /* Light background */
+  padding: 30px; /* Add padding for better spacing */
+  border: 1px solid #dcdcdc; /* Light border for the form */
+  border-radius: 8px; /* Add rounded corners for the form */
+}
+
+/* Form labels */
+.medicine-f11 label {
+  font-weight: bold; /* Make labels stand out */
+  color: #555555; /* Dark gray label text */
+}
+
+/* Form input fields */
+.medicineFieldIn {
+  padding: 10px; /* Add padding for easier typing */
+  border: 1px solid #cccccc; /* Light border for input fields */
+  border-radius: 5px; /* Rounded corners for input fields */
+  width: 100%; /* Make inputs take up full width */
+}
+
+/* Add medicine button */
+.add-medicineButton {
+  background-color: #4CAF50; /* Green color for positive action */
+  color: white; /* White text for readability on green background */
+  padding: 15px; /* Add padding for a comfortable button size */
+  border: none; /* Remove default button border */
+  border-radius: 8px; /* Rounded corners for the button */
+  cursor: pointer; /* Indicate clickable behavior */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.add-medicineButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

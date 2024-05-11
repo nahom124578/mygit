@@ -1,4 +1,4 @@
-.profile-container {
+.profile-cont12 {
     display: flex;
     align-items: flex-start;
   }
@@ -42,9 +42,20 @@
 
   }
   
-  .profile-info h1 {
+  /* .profile-info h1 {
+    
     margin-top: 20px;
+    color: black;
+    text-align: left;
+    
+  } */
+  #headerPersonal{
+    font-weight: bold;
+    color:rgb(9, 27, 96)
+
+   
   }
+
   
   .profile-info ul {
     list-style: none;

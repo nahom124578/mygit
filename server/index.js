@@ -11,6 +11,9 @@ const multer = require('multer')
 const path = require('path')
 const ImageReq = require("./models/imagings");
 const Patient = require("./models/patient");
+
+// pharmacist, medicine model
+ const MedicineModel =require("./models/MedicineModel")
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -248,6 +251,73 @@ app.get('/api/imagingRequest', async(req, res) => {
     res.status(500)
   }
 })
+
+
+
+// start
+//the following for medicine database
+// route all medicines frm databases
+app.get('/medicines',async(request,response)=>{
+
+  try{
+      const medicines= await MedicineMode.find({});
+      return response.status(202).json({
+          count:medicines.length,
+          data:medicines
+      });
+  }
+  catch(error){
+      console.log(error.message);
+      response.status(500).send({message:error.message})
+  }
+  console.log(request)
+  return response.status(201).send('this medicine')
+  });
+/// adding new medicine 
+app.post('/medicines',async(request,response)=>{
+  try{
+      if(
+          !request.body.name ||
+          !request.body.manufacturer ||
+          !request.body.unit ||
+          !request.body.type ||
+          !request.body.quantity||
+          !request.body.expiryDate 
+      )
+      {
+          return response.status(400).send({
+              message:'sends all files required includes name,manufacturer,unit,type,quantity,expiryDate'
+          });
+
+      }
+      const newMedicine = {
+          name: request.body.name,
+          manufacturer: request.body.manufacturer, // Corrected here
+          unit: request.body.unit,
+          type: request.body.type,
+          quantity: request.body.quantity,
+          expiryDate: request.body.expiryDate,
+      };
+      
+      const medicine = await MedicineMode.create(newMedicine);
+      return response.status(201).send(medicine);
+
+  }
+  catch(error){
+      console.log(error.message);
+      console.log("it is not working ")
+      response.status(500).send({message:error.message})
+
+  }
+
+
+  });
+/// the database should create on the mongodb
+// end
+
+
+
+
 
 // Start the server
 const PORT = 3001;
