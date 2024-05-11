@@ -58,9 +58,9 @@ import LabTechnician from './LabTech/LabTechnician.jsx';
 import ResultReporting from './LabTech/ResultReporting.jsx';
 
 // Manager
- 
 
- import Acount from './Manager/Acount.jsx';
+
+import Acount from './Manager/Acount.jsx';
 
 
 // Admin
@@ -97,7 +97,7 @@ import FinancePage from './pages/FinancePage.js';
 import ContentA from "./content/Content.js";
 import Radiologist from "./Radiology/Home.js";
 import Reception from "./Reception/App.js";
-function Routess() {
+function Routess () {
     return (
 
 
@@ -105,16 +105,16 @@ function Routess() {
             <BrowserRouter>
                 {/* <NavBar /> */}
                 <Routes>
-                <Route path="/loginapp" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path='/forgotPassword' element={<ForgotPassword />} />
-                <Route path='/verifyOtp' element={<VerifyOtp/>} />
-                <Route path='/changePassword' element={<ChangePassword />} />
-                <Route path="/dashboard/patient" element={<PatientDashboard />} />
-                <Route path="/dashboard/doctor" element={<DoctorDashboard />} />
+                    <Route path="/loginapp" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path='/forgotPassword' element={<ForgotPassword />} />
+                    <Route path='/verifyOtp' element={<VerifyOtp />} />
+                    <Route path='/changePassword' element={<ChangePassword />} />
+                    <Route path="/dashboard/patient" element={<PatientDashboard />} />
+                    <Route path="/dashboard/doctor" element={<DoctorDashboard />} />
                     <Route path="/" element={<HomePage />} />
-                   
+
                     <Route path="/signup" element={<Signup />} />
                     {/* <Route path="/dashboard" element={<Dashboard />} /> */}
                     <Route path="/patient" element={<Patient />} />
@@ -133,12 +133,12 @@ function Routess() {
                     <Route path="/LabTestRequestPage" element={<LaboratoryRequest></LaboratoryRequest>} />
                     <Route path="/Medical" element={<ImagingRequest></ImagingRequest>} />
                     <Route path="/PrescriptionFormPage" element={<Prescription></Prescription>} />
-                    <Route path="/ReferralForm" element={<ReferralForm></ReferralForm> } />
+                    <Route path="/ReferralForm" element={<ReferralForm></ReferralForm>} />
                     <Route path='/labtechnician'>
-<Route index element={<LabTechnician />} />
-<Route path="news" element={<h1>news</h1>} />
-<Route path="result" element={<ResultReporting />} />
-</Route>
+                        <Route index element={<LabTechnician />} />
+                        <Route path="news" element={<h1>news</h1>} />
+                        <Route path="result" element={<ResultReporting />} />
+                    </Route>
                     <Route path="/patient-addmision" element={<PatientAdmission />} />
                     <Route path="/staff" element={<Staffoverveiw />} />
                     <Route path="/notifications" element={<Notifications />} />
@@ -201,10 +201,10 @@ function Routess() {
                     <Route path="/radiologist" element={<Radiologist></Radiologist>} />
 
                     {/* pharmacist paths */}
-                   <Route path="/pharmacy" element={<PharmaHome />} />
-                   <Route path="/HomeToDo" element={<HomeToDo />} />
-                   <Route path="/Medicine" element={<Medicine  />} />
-                   <Route path="/ProfilePharma" element={<ProfilePharma />} />
+                    <Route path="/pharmacy" element={<PharmaHome />} />
+                    <Route path="/HomeToDo" element={<HomeToDo />} />
+                    <Route path="/Medicine" element={<Medicine />} />
+                    <Route path="/ProfilePharma" element={<ProfilePharma />} />
                 </Routes>
             </BrowserRouter>
         </EmployeecontextProvider>

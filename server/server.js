@@ -18,14 +18,14 @@ require('./db')();
 
 app.use(cors({ credentials: true, origin: `http://localhost:${CLIENT_PORT}` }));
 app.use(express.json());
-// app.use(session({
-//     saveUninitialized: false,
-//     resave: false,
-//     secret: process.env.SECRET_KEY,
-//     store: MongoStore.create({ mongoUrl: process.env.DB_URL })
-// }));
+app.use(session({
+    saveUninitialized: false,
+    resave: false,
+    secret: process.env.SECRET_KEY,
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL })
+}));
 
-app.post('/api/login', loginController); 
+app.post('/api/login', loginController);
 app.post('/api/signup', signupController);
 app.post('/api/forgotPassword', sendPasswordResetMail);
 app.post('/api/verifyOtp', verifyOtp);
@@ -35,4 +35,4 @@ app.get('/api/checkSession', checkSession);
 app.get('/api/dashboard/patient', patientDashboard);
 app.get('/api/dashboard/doctor', doctorDashboard);
 
-module.exports=app;
+module.exports = app;

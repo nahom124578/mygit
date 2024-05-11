@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const ChangePassword = () => {
-    const [ password, setPassword ] = useState('');
-    const [ confirmPassword, setConfirmPassword ] = useState('');
-    const [ errors, setErrors ] = useState({});
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -18,9 +19,9 @@ const ChangePassword = () => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length === 0) {
             try {
-                const response = await axios.post('/changePassword', { password: password });
+                const response = await axios.post('http://localhost:3001/api/changePassword', { password: password });
                 const role = response.data.role;
-                const roleUrl = `/dashboard/${role}`;
+                const roleUrl = `/${role}`;
                 navigate(roleUrl);
             } catch (err) {
                 console.error(err);
@@ -32,12 +33,12 @@ const ChangePassword = () => {
         <form onSubmit={handleSubmit}>
             <label>
                 <input type="password" placeholder="New Password"
-                onChange={(event) => setPassword(event.target.value)} />
+                    onChange={(event) => setPassword(event.target.value)} />
                 {errors.password && <div className="error">{errors.password}</div>}
             </label>
             <label>
                 <input type="password" placeholder="Confirm Password"
-                onChange={(event) => setConfirmPassword(event.target.value)} />
+                    onChange={(event) => setConfirmPassword(event.target.value)} />
                 {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
             </label>
             <button type="submit" onSubmit={handleSubmit}>Submit</button>

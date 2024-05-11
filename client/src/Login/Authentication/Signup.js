@@ -7,9 +7,12 @@ import useAuthorization from '../Hooks/useAuthorization';
 import './form.css'
 
 
+axios.defaults.withCredentials = true;
+
+
 const Signup = () => {
     const navigate = useNavigate();
-    const [ formData, setFormData ] = useState({
+    const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         dateOfBirth: '',
@@ -21,10 +24,10 @@ const Signup = () => {
         password: '',
         confirmPassword: '',
     });
-    const [ errors, setErrors ] = useState({});
-    const [ errorFromServer, setErrorFromServer ] = useState('');
+    const [errors, setErrors] = useState({});
+    const [errorFromServer, setErrorFromServer] = useState('');
     const { authorized, loading, role } = useAuthorization();
-    
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
@@ -39,13 +42,13 @@ const Signup = () => {
         if (!lastName) newErrors.lastName = '* This field is required';
         if (!dateOfBirth) newErrors.dateOfBirth = '* Date of birth is required';
         if (isFuture(parseISO(dateOfBirth))) newErrors.dateOfBirth =
-        '* Date of birth cannot be in the future';
+            '* Date of birth cannot be in the future';
         if (!gender) newErrors.gender = '* Gender is required';
         if (!role) newErrors.role = '* This field is required';
 
         const usernameRegex = /^[a-z0-9]{6,}$/;
         if (!usernameRegex.test(username)) newErrors.username =
-        '* Username must have at least 6 characters, and contain only small letters and numbers';
+            '* Username must have at least 6 characters, and contain only small letters and numbers';
 
         const phoneRegex = /^\d{10}$/;
         if (!phoneRegex.test(phoneNumber)) newErrors.phoneNumber = '* Invalid phone number';
@@ -60,14 +63,14 @@ const Signup = () => {
         return Object.keys(newErrors).length === 0;
     }
 
-   const  handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (validate()) {
             try {
                 const response = await axios.post('http://localhost:3001/api/signup', formData);
                 const role = response.data.role;
-                const roleUrl = `/dashboard/${role}`;
-                navigate(roleUrl); 
+                const roleUrl = `/${role}`;
+                navigate(roleUrl);
             } catch (err) {
                 console.error(err.response.data);
                 setErrorFromServer(err.response.data);
@@ -78,7 +81,7 @@ const Signup = () => {
     if (loading) {
         return <div></div>
     } else if (authorized) {
-        const roleUrl = `/dashboard/${role}`;
+        const roleUrl = `/${role}`;
         return navigate(roleUrl);
     }
     return (
@@ -90,25 +93,25 @@ const Signup = () => {
                 <label>
                     First Name<br />
                     <input type='text' name='firstName' value={formData.firstName}
-                    onChange={handleChange} /><br />
+                        onChange={handleChange} /><br />
                     {errors.firstName && <div className="error">{errors.firstName}</div>}
                 </label>
-                <label> 
+                <label>
                     Last Name<br />
                     <input type='text' name='lastName' value={formData.lastName}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.lastName && <div className="error">{errors.lastName}</div>}
                 </label>
-                <label> 
+                <label>
                     Date of Birth<br />
                     <input type='date' name='dateOfBirth' value={formData.dateOfBirth}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.dateOfBirth && <div className="error">{errors.dateOfBirth}</div>}
                 </label>
                 <label>
                     Gender<br />
                     <select name='gender' value={formData.gender} onChange={handleChange}>
-                        <option value="">Please select</option> 
+                        <option value="">Please select</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select><br />
@@ -117,7 +120,7 @@ const Signup = () => {
                 <label>
                     Role<br />
                     <select name='role' value={formData.role} onChange={handleChange}>
-                        <option value="">Please select</option> 
+                        <option value="">Please select</option>
                         <option value="patient">Patient</option>
                         <option value="doctor">Doctor</option>
                         <option value="labtechnician">Lab Technician</option>
@@ -134,31 +137,31 @@ const Signup = () => {
                 <label>
                     Choose a username<br />
                     <input type='text' name='username' value={formData.username}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.username && <div className="error">{errors.username}</div>}
                 </label>
                 <label>
                     Phone Number<br />
                     <input type='tel' name='phoneNumber' value={formData.phoneNumber}
-                    placeholder='ex: 0912345678' onChange={handleChange}/><br />
+                        placeholder='ex: 0912345678' onChange={handleChange} /><br />
                     {errors.phoneNumber && <div className="error">{errors.phoneNumber}</div>}
                 </label>
                 <label>
                     Email<br />
                     <input type='email' name='email' value={formData.email}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.email && <div className="error">{errors.email}</div>}
                 </label>
                 <label>
                     Password<br />
                     <input type='password' name='password' value={formData.password}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.password && <div className="error">{errors.password}</div>}
                 </label>
                 <label>
                     Confirm Password<br />
                     <input type='password' name='confirmPassword' value={formData.confirmPassword}
-                    onChange={handleChange}/><br />
+                        onChange={handleChange} /><br />
                     {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
                 </label>
 

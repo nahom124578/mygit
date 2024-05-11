@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './form.css'
 
+axios.defaults.withCredentials = true;
+
 const ForgotPassword = () => {
-    const [ email, setEmail] = useState('');
-    const [ errorFromServer, setErrorFromServer ] = useState('');
+    const [email, setEmail] = useState('');
+    const [errorFromServer, setErrorFromServer] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -16,10 +18,10 @@ const ForgotPassword = () => {
         }
 
         try {
-            const response = await axios.post('/forgotPassword', { email: email });
+            const response = await axios.post('http://localhost:3001/api/forgotPassword', { email: email });
 
             console.log(response.data);
-            navigate('/verifyOtp'); 
+            navigate('/verifyOtp');
         } catch (err) {
             console.error(err);
             submitButton.disabled = false;
@@ -28,17 +30,18 @@ const ForgotPassword = () => {
     };
 
     return <>
-            {errorFromServer && <div className='error'>{errorFromServer}</div>}
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email
-                    <input type="email" onChange={(event) => {
-                        setEmail(event.target.value);
-                        setErrorFromServer('')}} />
-                </label>
-                <button type="submit">Send OTP</button>
-            </form>
-        </>;
+        {errorFromServer && <div className='error'>{errorFromServer}</div>}
+        <form onSubmit={handleSubmit}>
+            <label>
+                Email
+                <input type="email" onChange={(event) => {
+                    setEmail(event.target.value);
+                    setErrorFromServer('')
+                }} />
+            </label>
+            <button type="submit">Send OTP</button>
+        </form>
+    </>;
 };
 
 export default ForgotPassword;

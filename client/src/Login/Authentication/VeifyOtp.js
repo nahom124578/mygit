@@ -4,18 +4,20 @@ import axios from 'axios';
 import './form.css'
 
 
+axios.defaults.withCredentials = true;
+
 const VerifyOtp = () => {
-    const [ otp, setOtp ] = useState('');
-    const [ errorFromServer, setErrorFromServer ] = useState('');
+    const [otp, setOtp] = useState('');
+    const [errorFromServer, setErrorFromServer] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/verifyOtp', {otp: otp});
+            const response = await axios.post('http://localhost:3001/api/verifyOtp', { otp: otp });
 
             console.log(response.data);
-            navigate('/changePassword'); 
+            navigate('/changePassword');
         } catch (error) {
             console.error(error);
             setErrorFromServer('Wrong OTP');
@@ -27,7 +29,7 @@ const VerifyOtp = () => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Verify
-                    <input type="text" onChange={ (event) => setOtp(event.target.value)} />
+                    <input type="text" onChange={(event) => setOtp(event.target.value)} />
                 </label>
                 <button type="submit">Submit</button>
                 <Link to="/forgotPassword">Send again?</Link>

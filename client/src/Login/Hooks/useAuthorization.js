@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
+axios.defaults.withCredentials = true;
+
 /*
  * Check for active session by talking to the server and set states accordingly 
  */
@@ -10,10 +12,10 @@ const useAuthorization = () => {
   const [authorized, setAuthorized] = useState(false);
   const [role, setRole] = useState('');
 
-  useEffect( () => {
+  useEffect(() => {
     const checkAuthorization = async () => {
       try {
-        const response = await axios.get('/checkSession');
+        const response = await axios.get('http://localhost:3001/api/checkSession');
 
         if (response.data.loginStatus) {
           setAuthorized(true);

@@ -5,13 +5,15 @@ import axios from 'axios';
 import useAuthorization from '../Hooks/useAuthorization';
 import './form.css';
 
+axios.defaults.withCredentials = true;
+
 
 const Login = () => {
     const navigate = useNavigate();
-    const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ errors, setErrors ] = useState({});
-    const [ errorFromServer, setErrorFromServer ] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+    const [errorFromServer, setErrorFromServer] = useState('');
     const { authorized, loading, role } = useAuthorization();
 
     const handleChangeUsername = (event) => {
@@ -34,9 +36,9 @@ const Login = () => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length === 0) {
             try {
-                const response = await axios.post( '/login', { username: username, password: password });
+                const response = await axios.post('http://localhost:3001/api/login', { username: username, password: password });
                 const role = response.data.role;
-                const roleUrl = `/dashboard/${role}`;
+                const roleUrl = `/${role}`;
                 navigate(roleUrl);
             } catch (err) {
                 console.error(err);
@@ -49,7 +51,7 @@ const Login = () => {
     if (loading) {
         return <div></div>;
     } else if (authorized) {
-        const roleUrl = `/dashboard/${role}`;
+        const roleUrl = `/${role}`;
         return navigate(roleUrl);
     }
     return (
@@ -61,13 +63,13 @@ const Login = () => {
                 <label>
                     Username<br />
                     <input type='text' name='username' value={username}
-                    onChange={handleChangeUsername} /><br />
+                        onChange={handleChangeUsername} /><br />
                     {errors.username && <div className="error">{errors.username}</div>}
                 </label>
                 <label>
                     Password<br />
                     <input type='password' name='password' value={password}
-                    onChange={handleChangePassword} /><br />
+                        onChange={handleChangePassword} /><br />
                     {errors.password && <div className="error">{errors.password}</div>}
                 </label>
                 <button type='submit'>Login</button>
