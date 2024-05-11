@@ -11,7 +11,7 @@ const multer = require('multer')
 const path = require('path')
 const ImageReq = require("./models/imagings");
 const Patient = require("./models/patient");
-
+const Feedback = require("./models/Feedback")
 // pharmacist, medicine model
  const MedicineModel =require("./models/MedicineModel")
 require('dotenv').config();
@@ -315,7 +315,29 @@ app.post('/medicines',async(request,response)=>{
 /// the database should create on the mongodb
 // end
 
+//for user feedback submission form
+app.post('/submit-feedback', async (req, res) => {
+  try {
+    console.log("Received feedback data:", req.body);
+    const { department, feedback, improvement } = req.body;
 
+    const newFeedback = new Feedback({
+      department,
+      feedback,
+      improvement,
+    });
+
+    const savedFeedback = await newFeedback.save();
+
+    console.log("Saved feedback:", savedFeedback);
+
+    res.status(200).json({ message: 'Feedback submitted successfully', data: savedFeedback });
+
+  } catch (error) {
+    console.error("Error in try-catch:", error);
+    res.status(500).json({ message: 'Failed to submit feedback', error: error.message });
+  }
+});
 
 
 
