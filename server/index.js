@@ -10,9 +10,10 @@ const ImageReqModel = require('./models/ImageRequest')
 const multer = require('multer') 
 const path = require('path')
 const Patient = require("./models/patient");
+const ImageReq = require("./models/imagings")
 const Feedback = require("./models/Feedback")
 // pharmacist, medicine model
- const MedicineMode=require("./models/MedicineModel")
+const MedicineMode = require("./models/MedicineModel")
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -38,30 +39,16 @@ const listPatientController = async (req, res) => {
 };
 
 
-
-
-
-
-
 const doctorImageRequestController = async (req, res) => {
   try {
-    const NewDoctorImageRequest = new ImageReq({
-      patient_name: req.body.patient_name,
-      physician_name: req.body.physician_name,
-      physician_contact: req.body.physician_contact,
-      dob: req.body.dob,
-      gender: req.body.gender,
-      imaging_procedure: req.body.imaging_procedure,
-      clinical_indication: req.body.clinical_indication,
-      special_instructions: req.body.special_instructions,
-    });
-    await NewDoctorImageRequest.save();
-    res
-      .status(200)
-      .json({ message: "Imaging Request Saved Successfully successfully" });
-  } catch (err) {
-    res.status(500).json({ error: "Somthing Went Wrong!" });
-  }
+    const ImagingDetail = new ImageReqModel(req.body)
+    await ImagingDetail.save()  
+    res.status(201).json({ message: "Request uploaded successfully"});
+
+   }
+   catch {
+    console.log('Error posting the Imaging Detail')
+   }
 };
 
 

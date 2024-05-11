@@ -54,7 +54,7 @@ const ImgReqSchema = new Schema({
 })
 
 const ImageReq =   mongoose.model("imagings", ImgReqSchema);
-module.exports =ImageReq;
+module.exports = ImageReq;
 
 
 
