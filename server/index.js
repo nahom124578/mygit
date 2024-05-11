@@ -13,6 +13,7 @@ const path = require('path')
 const Patient = require("./models/patient");
 const ImageReq = require("./models/imagings")
 const Feedback = require("./models/Feedback")
+const reportModel = require("./models/LaboratoryReport")
 // pharmacist, medicine model
 const MedicineMode = require("./models/MedicineModel")
 require('dotenv').config();

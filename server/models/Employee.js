@@ -289,5 +289,5 @@ module.exports =employes_list;
 module.exports =vacancyRecord;
 module.exports = reportModel;
 module.exports= requestModel;
-module.exports =ImageReq;
+module.exports = ImageReq;
       
