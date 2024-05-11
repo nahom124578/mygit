@@ -134,11 +134,7 @@ function Routess() {
                     <Route path="/Medicalimagingrequest" element={<ImagingRequest></ImagingRequest>} />
                     <Route path="/PrescriptionFormPage" element={<Prescription></Prescription>} />
                     <Route path="/ReferralForm" element={<ReferralForm></ReferralForm> } />
-                    <Route path='/labtechnnician' >
-                    <Route index element={<LabTechnician />} />
-<Route path="news" element={<h1>news</h1>} />
-<Route path="result" element={<ResultReporting />} />
-</Route>
+                    
                     <Route path="/patient-addmision" element={<PatientAdmission />} />
                     <Route path="/staff" element={<Staffoverveiw />} />
                     <Route path="/notifications" element={<Notifications />} />
@@ -199,6 +195,8 @@ function Routess() {
                     <Route path="/receptionist" element={<Reception></Reception>} />
                     <Route path="/content-creatorModule" element={<ContentA></ContentA>} />
                     <Route path="/radiologist" element={<Radiologist></Radiologist>} />
+                    <Route path="/LabTechnician" element={<ResultReporting></ResultReporting>} />
+                    <Route path="/ResultReporting" element={<ResultReporting></ResultReporting>} />
 
                     {/* pharmacist paths */}
                    <Route path="/pharmacy" element={<PharmaHome />} />
