@@ -42,10 +42,6 @@ function LabTechnician(){
         paddingBottom: '1',
       };
 
-    const liStyle = {
-        //paddingLeft: '20px',
-        listStyleType: 'none',
-    }
     return(
         <div className="main-element">
             <div className="labpage">
