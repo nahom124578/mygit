@@ -7,6 +7,7 @@ const cors = require('cors');
 const UserModel = require('./models/postInfo')
 const ImageModel = require('./models/imageReport')
 const ImageReqModel = require('./models/ImageRequest')
+const LabProcess = require('./models/db') 
 const multer = require('multer') 
 const path = require('path')
 const Patient = require("./models/patient");
@@ -110,36 +111,17 @@ app.post('/api/labresult', async (req, res) => {
   }
 });
 
-//lab request
-app.post('/labTestRequest', async (req, res) => {
+//Laboratory test request code
+app.post('/api/labTestRequest', async (req, res) => {
   try {
-    const {
-      patientName,
-      patientID,
-      doctorName,
-      doctorID,
-      labTestType,
-      testDate,
-      urgency
-    } = req.body;
+    const LabModel = new LabProcess(req.body)
+    await LabModel.save()  
+    res.status(201).json({ message: 'Lab test request created successfully'});
 
-    const newLabProcess = new LabProcess({
-      patientName,
-      patientID,
-      doctorName,
-      doctorID,
-      labTestType,
-      testDate,
-      urgency
-    });
-
-    await newLabProcess.save();
-
-    res.status(201).json({ message: 'Lab test request submitted successfully' });
-  } catch (error) {
-    console.error('Error inserting document:', error);
-    res.status(500).json({ message: 'Failed to submit lab test request' });
   }
+  catch {
+    console.log('Error creating lab test request.')
+   }
 });
 
 //configuring the server disk storage for image storage and other files
@@ -324,8 +306,6 @@ app.post('/submit-feedback', async (req, res) => {
     res.status(500).json({ message: 'Failed to submit feedback', error: error.message });
   }
 });
-
-
 
 // Start the server
 const PORT = 3001;

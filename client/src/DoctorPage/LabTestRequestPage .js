@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LabTestRequestPage.css';
-
+import axios from 'axios'
 function LabTestRequestPage() {
   const [formData, setFormData] = useState({
     patientName: '',
@@ -35,13 +35,7 @@ function LabTestRequestPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/labTestRequest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await axios.post('http://localhost:3001/api/labTestRequest', formData)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
