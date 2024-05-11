@@ -26,7 +26,7 @@ function Medicine() {
       expiryDate
     };
 
-    axios.post('http://localhost:3000/medicines', medicineData)
+    axios.post('http://localhost:3001/medicines', medicineData)
       .then(() => {
        // enqueueSnackbar('Medicine added successfully', { variant: 'success' });
         // navigate('/');

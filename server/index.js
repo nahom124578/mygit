@@ -12,7 +12,7 @@ const path = require('path')
 const Patient = require("./models/patient");
 
 // pharmacist, medicine model
- const MedicineModel =require("./models/MedicineModel")
+ const MedicineMode=require("./models/MedicineModel")
 require('dotenv').config();
 
 // Connect to MongoDB
