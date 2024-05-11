@@ -70,8 +70,16 @@ import Employee from './pages/employee';
 import HomeAdmin from './pages/Home';
 import Hr from './pages/Hr.js';
 
+// pharmacist Routes start
+import HomeToDo from './Pharmacy/HomeToDo.jsx';
+import Medicine from './Pharmacy/Medicine.jsx';
+import ProfilePharma from './Pharmacy/ProfilePharma.jsx';
+import PharmaHome from './Pharmacy/PharmaHome.jsx';
+// end
 
- import EmployeeTable from "../src/Componenet/Finance/EmployeeTable.jsx";
+
+
+import EmployeeTable from "../src/Componenet/Finance/EmployeeTable.jsx";
 import Expense from "../src/Componenet/Finance/Expense";
 import HospitalService from "../src/Componenet/Finance/HospitalService";
 import Overview from "../src/Componenet/Finance/Overview";
@@ -191,6 +199,12 @@ function Routess() {
                     <Route path="/receptionist" element={<Reception></Reception>} />
                     <Route path="/content-creatorModule" element={<ContentA></ContentA>} />
                     <Route path="/radiologist" element={<Radiologist></Radiologist>} />
+
+                    {/* pharmacist paths */}
+                   <Route path="/pharmacy" element={<PharmaHome />} />
+                   <Route path="/HomeToDo" element={<HomeToDo />} />
+                   <Route path="/Medicine" element={<Medicine  />} />
+                   <Route path="/ProfilePharma" element={<ProfilePharma />} />
                 </Routes>
             </BrowserRouter>
         </EmployeecontextProvider>

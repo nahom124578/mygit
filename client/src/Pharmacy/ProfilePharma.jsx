@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './Profile.css'; // Assuming you create Profile.css for styling
+import './componentsPharma/ProfilePharmacist.css';
 
-function Profile() {
-  const [profileInfo] = useState({
+function ProfilePharma() {
+  const [profileInfo, setProfileInfo] = useState({
     fullName: '',
+    gender: '',
     email: '',
     phoneNumber: '',
-    Qualification:'',
+    Qualification: '',
     address: '',
     pharmacyName: '',
     pharmacyAddress: ''
@@ -14,11 +15,10 @@ function Profile() {
 
   const [profilePicture, setProfilePicture] = useState(null);
 
-/* const handleProfileInfoChange = (e) => {
+  const handleProfileInfoChange = (e) => {
     const { name, value } = e.target;
     setProfileInfo({ ...profileInfo, [name]: value });
   };
- */ 
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -26,17 +26,21 @@ function Profile() {
   };
 
   return (
-    <div className="profile-container">
+    <div className="profile-cont12">
       <div className="profile-picture">
         <img src={profilePicture ? URL.createObjectURL(profilePicture) : 'Placeholder.png'} alt="Profile" />
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <button onClick={() => setProfilePicture(null)}>Change Photo</button>
       </div>
       <div className="profile-info">
-        <h1>Personal information</h1>
+        
         <ul>
+          <li id = "headerPersonal">Personal information</li>
           <li>
             <strong>Full Name:</strong> {profileInfo.fullName}
+          </li>
+          <li>
+            <strong>Gender:</strong> {profileInfo.gender}
           </li>
           <li>
             <strong>Email:</strong> {profileInfo.email}
@@ -44,11 +48,9 @@ function Profile() {
           <li>
             <strong>Phone Number:</strong> {profileInfo.phoneNumber}
           </li>
-          
           <li>
-            <strong> Education Qualification:</strong> {profileInfo.Qualification}
+            <strong>Education Qualification:</strong> {profileInfo.Qualification}
           </li>
-
           <li>
             <strong>Address:</strong> {profileInfo.address}
           </li>
@@ -58,11 +60,10 @@ function Profile() {
           <li>
             <strong>Pharmacy Address:</strong> {profileInfo.pharmacyAddress}
           </li>
-
         </ul>
       </div>
     </div>
   );
 }
 
-export default Profile;
+export default ProfilePharma;
