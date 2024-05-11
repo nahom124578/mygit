@@ -29,6 +29,7 @@ app.use(cors()); // Add this line to enable CORS
 app.use(bodyParser.json()); 
 //imaging
 
+
 const listPatientController = async (req, res) => {
   try {
     const result = await Patient.find({}).exec();
@@ -60,7 +61,6 @@ app.get("/api/list_patient", listPatientController);
 app.get("/", (req, res) => {
   res.send("Welcome to the Hospital Management System");
 });
-
 //lab request display
 app.put('/update/:id', async (req, res) => {
   try {
