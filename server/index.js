@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 //imaging
 
 
+//patient list display on Doctor's Page 
 const listPatientController = async (req, res) => {
   try {
     const result = await Patient.find({}).exec();
@@ -40,6 +41,7 @@ const listPatientController = async (req, res) => {
 };
 
 
+//Doctor Imaging request form
 const doctorImageRequestController = async (req, res) => {
   try {
     const ImagingDetail = new ImageReqModel(req.body)
