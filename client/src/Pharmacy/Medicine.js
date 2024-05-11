@@ -9,15 +9,30 @@ function Medicine({ onAddMedicine }) {
   const [expiryDate,setExpiryDate]=useState('');
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onAddMedicine({ id: Date.now(), name,manufacturer, unit, type, quantity ,expiryDate}); // Include quantity in data
-    setName('');
-    setUnit('');
-    setType('');
-    setQuantity(1); 
-    setExpiryDate('');// Reset quantity after submission
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const medicineData = {
+    name,
+    manufacturer,
+    unit,
+    type,
+    quantity,
+    expiryDate
   };
+
+  axios.post('http://localhost:3001/medicines', medicineData)
+    .then(() => {
+      // enqueueSnackbar('Medicine added successfully', { variant: 'success' });
+      // navigate('/');
+      alert("Medicine added successfully");
+    })
+    .catch((error) => {
+      // enqueueSnackbar('Failed to add medicine. Please try again later.', { variant: 'error' });
+      console.error('Error adding medicine:', error);
+      alert("Error Adding medicine");
+    });
+};
 
   return (
     <div>
@@ -33,16 +48,14 @@ function Medicine({ onAddMedicine }) {
           className="medicine-input"
         />
         <label htmlFor="manufacturer">Medicine Manufacturer:</label>
-<input
-  type="text"
-  id="manufacturer"
-  value={manufacturer}
-  onChange={(e) => setManufacturer(e.target.value)}
-  required
-  className="medicine-input"
-/>
-
-
+        <input
+          type="text"
+          id="manufacturer"
+          value={manufacturer}
+          onChange={(e) => setManufacturer(e.target.value)}
+          required
+          className="medicine-input"
+        />
         <label htmlFor="unit">Unit:</label>
         <input
           type="text"
