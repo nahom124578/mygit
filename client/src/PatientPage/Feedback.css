@@ -1,4 +1,5 @@
 
+
 /* feedback for */
 
 .feedback-container {
@@ -90,10 +91,6 @@
   width: 100px;
   height: 30px;
   text-align: center;
-  display: block; /* Ensures the button takes up the full width */
-  
-  text-align: center;
-  
   margin-bottom: 50px;
 }
 
@@ -195,41 +192,55 @@ th {
 .mybut:hover {
   background-color: #4560a0;
 }
-.thank-you-message {
-  height: inherit;
-  bottom: 320px;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.thank-you-message button {
-  height: 50px;
-  width: 100px;
 
-  position: relative;
-  top: 20px;
-}
-
-/* popup */
-
-.popup {
-  max-width: 50%;
+/* Popup Styles */
+.popup1 {
+  max-width: 60%;
   width: 100%;
-  background: #fff;
-  border-radius: 6px;
+  background: #ffffff;
+  border-radius: 12px; /* More rounded corners */
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.3);
-  padding: 0 30px 30px;
+  transform: translate(-50%, -50%);
+  padding: 40px;
   color: #333;
-  border: rgb(137, 108, 108) solid;
-  border-radius: 30px;
-  opacity: 0; /* Initially transparent */
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  border: 3px solid #4560a0;
+  z-index: 1000;
+  text-align: center;
+  overflow: hidden; /* Ensure content doesn't overflow */
 }
+
+.popup1 .h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #4560a0; /* Highlight the heading color */
+}
+
+.popup1 .p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.popup1 .button {
+  background-color: #4560a0;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 14px 28px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for button */
+}
+
+.popup1 .button:hover {
+  background-color: #345090; /* Darker shade on hover */
+}
+
 
 .overlay {
   position: fixed;
@@ -237,7 +248,25 @@ th {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  opacity: 1; /* Initially transparent */
-  /* transition: opacity 0.5s ease, visibility 0.5s ease; Transition for fade effect */
+  background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px); /* Add a blur effect to the background */
 }
+
+.overlay::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #ffffff 20%, transparent 20.1%); /* Enhance gradient */
+  background-repeat: no-repeat;
+  background-position: 50%;
+  pointer-events: none;
+}
+
