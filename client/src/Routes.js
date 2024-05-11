@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import HomePage from "./main-page/Home-page.js";
 
-import NavBar from "./main-page/NavBar";
+
 // import Signup from './Signup';
 import Signup from './Login/Authentication/Signup';
 import Login from './Login/Authentication/Login';
@@ -126,8 +126,8 @@ function Routess() {
                     <Route path="/Medical" element={<ImagingRequest></ImagingRequest>} />
                     <Route path="/PrescriptionFormPage" element={<Prescription></Prescription>} />
                     <Route path="/ReferralForm" element={<ReferralForm></ReferralForm> } />
-                    <Route path='/labtechnician'>
-<Route index element={<LabTechnician />} />
+                    <Route path='/labtechnnician' >
+                    <Route index element={<LabTechnician />} />
 <Route path="news" element={<h1>news</h1>} />
 <Route path="result" element={<ResultReporting />} />
 </Route>
