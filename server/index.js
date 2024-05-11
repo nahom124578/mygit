@@ -13,7 +13,7 @@ const ImageReq = require("./models/imagings");
 const Patient = require("./models/patient");
 
 // pharmacist, medicine model
- const MedicineModel =require("./models/MedicineModel")
+ const MedicineMode=require("./models/MedicineModel")
 require('dotenv').config();
 
 // Connect to MongoDB
