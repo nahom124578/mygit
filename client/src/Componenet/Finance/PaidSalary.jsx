@@ -4,28 +4,29 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "./custom-ag-grid.css";
 
-const Expense = () => {
-  const [colDefs] = useState([
-    { field: "year" },
-    { field: "month" },
-    { field: "Category" },
-    { field: "BankName" },
-    { field: "Amount" },
+const PaidSalary = () => {
+  const [colDef] = useState([
+    { field: "name" },
+    { field: "employeeID" },
+    { field: "dateOfTransaction" },
+    { field: "bankName" },
+    { field: "bankAccountNumber" },
+    { field: "transactionID" },
   ]);
-  const [rowData, setRowData] = useState([]);
 
+  const [rowData, setRowData] = useState([]);
   useEffect(() => {
-    // Fetch data from the API :
-    fetch("http://127.0.0.1:8000/api/v1/expenses")
+    // Fetch data from the API
+    fetch("http://127.0.0.1:8000/api/v1/paidsalary")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then((data) => {
+      .then((paid) => {
         // Store the fetched data in the state
-        setRowData(data);
+        setRowData(paid);
       })
       .catch((error) => {});
   }, []);
@@ -36,7 +37,7 @@ const Expense = () => {
         {" "}
         <h3 style={{ fontSize: 24, textAlign: "center", fontWeight: "bolder" }}>
           {" "}
-          Expenses Report
+          paid salary{" "}
         </h3>
       </div>
       <div
@@ -52,7 +53,7 @@ const Expense = () => {
             className="ag-theme-alpine"
             style={{ height: "100%", width: "100%" }}
           >
-            <AgGridReact rowData={rowData} columnDefs={colDefs} />
+            <AgGridReact rowData={rowData} columnDefs={colDef} />
           </div>
         </div>
       </div>
@@ -60,4 +61,4 @@ const Expense = () => {
   );
 };
 
-export default Expense;
+export default PaidSalary;

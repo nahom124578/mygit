@@ -2,28 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import sold_Product from './sold_Product.json';
 import './custom-ag-grid.css'; 
 
-function SoldProduct() { 
+const SoldProduct = () =>{ 
     const [colDefs] = useState([
-        { field: 'product_id' },
+        { field: 'productId' },
         { field: 'name' },
-        { field: 'price' },
-        { field: 'soldQuantity' },
-        { field: 'category' }
+        { field: 'unitPrice' },
+        { field: 'itemQuantity' },
+        { field: 'category' },
+        { field: 'dateOfSale'}
     ]);
 
     const [rowData, setRowData] = useState([]);
 
+
     useEffect(() => {
-        setRowData(sold_Product);
-    }, []);
-const totalPrice=10;
+        // Fetch data from the API
+        fetch('http://127.0.0.1:8000/api/v1/soldproduct')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(SoldProduct => {
+            // Store the fetched data in the state
+            setRowData(SoldProduct);
+          })
+          .catch(error => {
+          });
+      }, []); 
+
     return (
-        <div>
+        <div  style={{width:'98%'}}>
             <div> <h3 style={{fontSize:24,textAlign:'center', fontWeight:'bolder'}}> Sold Products </h3></div>
-            <div style={{ marginLeft:'10%', display: 'flex', width: '100%', height: '500px' }}>
+            <div style={{ marginLeft:'1%', display: 'flex', width: '100%', height: '500px' }}>
                
                 <div style={{ flex: '1', overflow: 'hidden' }}>
                     <div className="ag-theme-alpine" style={{ height: '100%', width: '100%' }}>
@@ -34,14 +48,9 @@ const totalPrice=10;
                     </div>
                 </div>
             </div>
-
-            <div style={{height : '100px',alignContent:'center'}}>              
-       <h2
-        style={{textAlign:'center', fontWeight:'bold',paddingTop:'2%',height: '100px', width: '400px', marginLeft: '40%', 
-     }} > Total Price of the sold product in this month    : {  totalPrice} </h2>
+        <div style={{height : '100px',alignContent:'center'}}>              
       </div>
-        </div>      
+      </div>      
     );
 }
-
 export default SoldProduct;

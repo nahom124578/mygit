@@ -1,44 +1,50 @@
-import React, { useState } from 'react';
+import React from "react";
+import axios from "axios";
 
 const EmployeeAttendance = ({ product }) => {
-    const [attendance, setAttendance] = useState(false);
+  const handleSubmit = async () => {
+    let x = product.attendance.toString(); // Compute x inside handleSubmit
+    try {
+      if (x == "false") {
+        const updatedDataatt = {
+          attendance: true,
+        };
+        const updatedData = {
+          employeeId: product._id,
+          employeeName: product.firstName,
+          date: new Date(),
+          remainingLeaveDay: 30,
+          onLeave: 20,
+        };
 
-    const toggleAttendance = () => {
-        setAttendance(!attendance);
-    };
+        await axios.post("http://localhost:8000/attendace", updatedData);
+        alert(`${product.firstName} attendance marked.`);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-        if (attendance) {
-            alert(`${product.name} attended.`);
-        } else {
-            alert(`${product.name} did not attend.`);
-        }
-    };
+        await axios.put(
+          `http://localhost:8000/updateEmploye/${product._id}`,
+          updatedDataatt
+        );
+        console.log("Attendance updated successfully");
+      } else {
+        alert(`${product.firstName} has already attended.`);
+      }
+    } catch (error) {
+      console.error(error);
+      alert(`Error updating attendance for ${product.firstName}`);
+    }
+  };
 
-    return (
-        <div className="py-4">
-            <form onSubmit={handleSubmit}>
-                {product && (
-                    <div>
-                        <h2 className="text-lg font-semibold mb-4">Employee Attendance</h2>
-
-                        <label className="flex items-center mb-2 ml-48 py-5">
-                            <input 
-                                type="checkbox" 
-                                onChange={toggleAttendance} 
-                                checked={attendance} 
-                                className="form-checkbox ml-2 "
-                            />
-                            <span className="text-gray-700-center ml-30 aligh">Employee name : {product.name}</span>
-                        </label>
-                        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Submit</button>
-                    </div>
-                )}
-            </form>
-        </div>
-    );
-}
-
+  return (
+    <div className="py-4">
+      <h2 className="text-lg font-semibold mb-4">Employee Attendance</h2>
+      <p>Employee name : {product.firstName}</p>
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mt-4"
+      >
+        Mark Attendance
+      </button>
+    </div>
+  );
+};
 export default EmployeeAttendance;

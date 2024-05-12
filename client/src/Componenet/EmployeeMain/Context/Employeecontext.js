@@ -1,18 +1,26 @@
-import React, { createContext, useState } from 'react';
-import AllProducts from "../../asset/all_product.js";
-// import Allprodacts from "../Componenet/asset/all_product.js"
-
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 export const Employeecontext = createContext(null);
-
 const Employeecontextprovider = (props) => {
-    const Contextvalue={AllProducts}
-    const [employeeItems, setEmployeeItems] = useState(0); // Corrected variable name
+  const [AllProducts, setAllProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/display")
+      .then((response) => {
+        setAllProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-    return (
-        <Employeecontext.Provider value={Contextvalue}>
-            {props.children}
-        </Employeecontext.Provider>
-    );
-}
+  const contextValue = { AllProducts };
+  console.log(AllProducts);
 
+  return (
+    <Employeecontext.Provider value={contextValue}>
+      {props.children}
+    </Employeecontext.Provider>
+  );
+};
 export default Employeecontextprovider;
