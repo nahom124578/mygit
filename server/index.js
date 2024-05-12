@@ -47,7 +47,7 @@ app.use(session({
 		httpOnly: false,
 		sameSite: 'none'
 	}
-	store: MongoStore.create({ mongoUrl: 'mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System' })
+	,store: MongoStore.create({ mongoUrl: 'mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System' })
 }));
 
 

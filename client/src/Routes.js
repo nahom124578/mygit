@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import HomePage from "./main-page/Home-page.js";
 
-
 // import Signup from './Signup';
 import Signup from "./Login/Authentication/Signup";
 import Login from "./Login/Authentication/Login";
@@ -87,6 +86,9 @@ import ContentA from "./content/Content.js";
 import ContentArchive from "./content/Component/ContentArchive.js";
 import Radiologist from "./Radiology/Home.js";
 import Reception from "./Reception/App.js";
+
+//
+import AnnouncementPage from "../src/PatientPage/AnnouncementPage.js";
 function Routess() {
   return (
     <EmployeecontextProvider>
@@ -143,7 +145,7 @@ function Routess() {
             <Route path="result" element={<ResultReporting />} />
           </Route>
           <Route path="/patient-addmision" element={<PatientAdmission />} />
-          <Route path="/manager-feedback" element={<Manager_Feedback />} />          
+          <Route path="/manager-feedback" element={<Manager_Feedback />} />
           <Route path="/staff" element={<Staffoverveiw />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/employees" element={<Employees />} />
@@ -164,32 +166,8 @@ function Routess() {
           <Route path="/res" element={<Resorse />} />
           <Route path="/not" element={<NotificationCenter />} />
 
-<<<<<<< HEAD
           <Route path="/manager" element={<Manager></Manager>}></Route>
           <Route path="/employees" element={<Employees />} />
-=======
-                    <Route path="/App1" element={<PatientInformation></PatientInformation>} />
-                    <Route path="/LabTestRequestPage" element={<LaboratoryRequest></LaboratoryRequest>} />
-                    <Route path="/Medicalimagingrequest" element={<ImagingRequest></ImagingRequest>} />
-                    <Route path="/PrescriptionFormPage" element={<Prescription></Prescription>} />
-                    <Route path="/ReferralForm" element={<ReferralForm></ReferralForm> } />
-                    
-                    <Route path="/patient-addmision" element={<PatientAdmission />} />
-                    <Route path="/staff" element={<Staffoverveiw />} />
-                    <Route path="/notifications" element={<Notifications />} />
-                    <Route path="/employees" element={<Employees />} />
-                    <Route path="/finance" element={<Finance />} />
-                    <Route path="/content" element={<Content />} />
-                    <Route path="/campaign" element={<Campaign />} />
-                    <Route path="/feedback" element={<Feedback />} />
-                    <Route path="/account" element={<Acount />} />
-                    <Route path="/patient" element={<PatientAdmission />} />
-                    <Route path="/staff" element={<Staffoverveiw />} />
-                    <Route path="/kpi" element={<KPIPage />} />
-                    <Route path="/events" element={<Upcome />} />
-                    <Route path="/res" element={<Resorse />} />
-                    <Route path="/not" element={<NotificationCenter />} />
->>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
 
           <Route path="/admin" element={<HomeAdmin />} />
 
@@ -204,7 +182,6 @@ function Routess() {
           <Route path="/sold-products" element={<SoldProduct />} />
           <Route path="/pay-expense" element={<PayExpense />} />
 
-<<<<<<< HEAD
           <Route path="/hospitalservice" element={<HospitalService />} />
           <Route path="/paidsalary" element={<PaidSalary />} />
           <Route path="/expense" element={<Expense />} />
@@ -226,61 +203,3 @@ function Routess() {
   );
 }
 export default Routess;
-=======
-
-
-                    <Route path="/manager" element={<Manager></Manager>}></Route>
-                    <Route path="/employees" element={<Employees />} />
-
-
-
-
-
-
-                    <Route path="/admin" element={<HomeAdmin />} />
-
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/Financee" element={<FinancePage />} />
-                    <Route path="/HRM" element={<Hr />}></Route>
-                    <Route path="/Employee" element={<Employee />}></Route>
-                    <Route path="/Employee">
-                        <Route path=":EmployeeId" element={<EmployeeDetail />}>
-
-                        </Route>
-                    </Route>
-                    <Route path="/salary-payment" element={<EmployeeTable />} />
-                    <Route path="/sold-products" element={<SoldProduct />} />
-                    <Route path="/pay-expense" element={<PayExpense />} />
-
-                    <Route path="/hospitalservice" element={<HospitalService />} />
-                    <Route path="/overview" element={<Overview />} />
-                    <Route path="/expense" element={<Expense />} />
-                    <Route path="/revenue" element={<Revenue />} />
-                    <Route path="/photo" element={<ForPhoto />} />
-                    <Route path="/fireEmployee" element={<FireEmployee />} />
-                    <Route path="/hireForm" element={<HireForm />} />
-                    <Route path="/announceVacancy" element={<AnnounceVacancy />} />
-
-
-
-
-
-
-                    <Route path="/receptionist" element={<Reception></Reception>} />
-                    <Route path="/content-creatorModule" element={<ContentA></ContentA>} />
-                    <Route path="/radiologist" element={<Radiologist></Radiologist>} />
-                    <Route path="/LabTechnician" element={<ResultReporting></ResultReporting>} />
-                    <Route path="/ResultReporting" element={<ResultReporting></ResultReporting>} />
-
-                    {/* pharmacist paths */}
-                   <Route path="/pharmacy" element={<PharmaHome />} />
-                   <Route path="/HomeToDo" element={<HomeToDo />} />
-                   <Route path="/Medicine" element={<Medicine  />} />
-                   <Route path="/ProfilePharma" element={<ProfilePharma />} />
-                </Routes>
-            </BrowserRouter>
-        </EmployeecontextProvider>
-    );
-};
-export default Routess
->>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
