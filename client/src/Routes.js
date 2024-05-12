@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import Login from './Login';
 
 import HomePage from "./main-page/Home-page.js";
-
+import AnnouncementPage from './PatientPage/AnnouncementPage.js';
 
 // import Signup from './Signup';
 import Signup from './Login/Authentication/Signup';
@@ -118,6 +118,8 @@ function Routess() {
                     <Route path="/signup" element={<Signup />} />
                     {/* <Route path="/dashboard" element={<Dashboard />} /> */}
                     <Route path="/patient" element={<Patient />} />
+                    <Route path="/announcement" element={<AnnouncementPage />} />
+
                     <Route path="manager/feedback" element={<Feedback></Feedback>} />
                     <Route path="/make-appointment" element={<AppMash></AppMash>} />
                     <Route path="/bookappointment/new" element={<New></New>} />

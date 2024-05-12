@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnnouncementPage from '../PatientPage/AnnouncementPage';
 
 import './NavBar.css';
 
@@ -11,8 +12,8 @@ const Navbar = () => {
           Home
         </Link>
         <Link to="/announcement" className="navbar-item">
-          Announcement
-        </Link>
+          announcement
+          </Link>
         <Link to="/Loginapp" className="navbar-item login-link">
           Login
         </Link>
