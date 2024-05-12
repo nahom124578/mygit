@@ -18,7 +18,7 @@ export default function Reschedule() {
         
           try {
             console.log(updatedData)
-            const response = await axios.put(`http://localhost:3001/api/updateApp/${upId}`, updatedData);
+            const response = await axios.put(`/api/updateApp/${upId}`, updatedData);
             console.log(response)
             alert('Appointment date and details updated successfully.')
         

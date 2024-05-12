@@ -12,7 +12,7 @@ const VerifyOtp = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/verifyOtp', {otp: otp});
+            const response = await axios.post('/api/verifyOtp', {otp: otp});
 
             console.log(response.data);
             navigate('/changePassword'); 

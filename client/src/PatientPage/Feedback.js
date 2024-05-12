@@ -45,7 +45,7 @@ function Feedback() {
     };
 
     try {
-      const response = await fetch('http://localhost:3001/submit-feedback', {
+      const response = await fetch('/submit-feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

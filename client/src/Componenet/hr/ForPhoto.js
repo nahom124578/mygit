@@ -8,7 +8,7 @@ const ForPhoto = () => {
   useEffect(() => {
     const fetchEmployees = async (req, resp) => {
       try {
-        const response = await axios.get("http://localhost:8000/employee"); // this is a http request to be sent via a axios to a server ok man of God i mean that is a Api
+        const response = await axios.get("/employee"); // this is a http request to be sent via a axios to a server ok man of God i mean that is a Api
         setEmploye(response.data); // this is a Json obect ok man then converted to array in front end because we have initialazed it with a array ::
       } catch (error) {
         console.log(error);
@@ -21,7 +21,7 @@ const ForPhoto = () => {
     // alert("Are u sure to delete this guys ??");
     try {
       setEmploye(employees.filter((x) => x.userid !== userid)); // removes all items that is not equalt to a userid
-      await axios.delete(`http://localhost:8000/remove/${userid}`);
+      await axios.delete(`/remove/${userid}`);
       alert("submited Succesfully !");
     } catch (error) {
       console.log(" not deleted properly guys !!");

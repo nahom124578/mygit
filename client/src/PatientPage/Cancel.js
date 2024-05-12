@@ -11,7 +11,7 @@ export default function Cancel() {
             return; // Prevent unnecessary API call if no ID is provided
           }
         try {
-            await axios.delete(`http://localhost:3001/api/deleteApp/${AppId}`)
+            await axios.delete(`/api/deleteApp/${AppId}`)
             alert('Appointment Cancelled Successfully')
             setAppId('')
         }

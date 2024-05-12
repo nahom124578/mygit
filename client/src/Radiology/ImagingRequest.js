@@ -9,7 +9,7 @@ const ImagingRequest = () => {
   const [request, setRequest] = useState(null)
   useEffect(() => {
     async function fetchRequests() {
-      const response = await axios.get('http://localhost:3001/api/imagingRequest')
+      const response = await axios.get('/api/imagingRequest')
       const json = await response.json()
 
       if (response.ok) { //this means that we have succesfully fetched the data and want to do state manipulation locally

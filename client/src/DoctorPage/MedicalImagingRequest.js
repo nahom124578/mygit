@@ -12,7 +12,7 @@ import './imaging.css';
 
     const handleSubmit = async(e) => { 
         e.preventDefault(); // Prevent default form submission
-        await axios.post('http://localhost:3001/api/doctor_image_request', formData)
+        await axios.post('/api/doctor_image_request', formData)
   }
 
 

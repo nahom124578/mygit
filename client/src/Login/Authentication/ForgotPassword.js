@@ -16,7 +16,7 @@ const ForgotPassword = () => {
         }
 
         try {
-            const response = await axios.post('/forgotPassword', { email: email });
+            const response = await axios.post('/api/forgotPassword', { email: email });
 
             console.log(response.data);
             navigate('/verifyOtp'); 

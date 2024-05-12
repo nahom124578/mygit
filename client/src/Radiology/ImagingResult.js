@@ -15,7 +15,7 @@ const ImagingResult = () => {
     const formData = new FormData()
     formData.append('image', detail.image)
     formData.append('details', detail.details)
-    await axios.post('http://localhost:3001/api/uploadRadImage', formData)
+    await axios.post('/api/uploadRadImage', formData)
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }
