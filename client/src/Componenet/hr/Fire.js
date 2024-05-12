@@ -10,7 +10,7 @@ const Fire = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/employee");
+        const response = await axios.get("/employee");
         setEmployees(response.data);
       } catch (error) {
         console.log(error);
@@ -24,7 +24,7 @@ const Fire = () => {
     console.log(`this is in front end ${userid.trim()}`);
     try {
       const response = await axios.get(
-        `http://localhost:8000/search/${userid.trim()}`
+        `/search/${userid.trim()}`
       );
       setEmployee(response.data);
       console.log("user found man !");
@@ -41,7 +41,7 @@ const Fire = () => {
       const filteredEmployees = employees.filter((x) => x.userid !== userid);
       console.log("Filtered employees after deletion:", filteredEmployees);
       setEmployees(filteredEmployees);
-      await axios.delete(`http://localhost:8000/remove/${userid}`);
+      await axios.delete(`/remove/${userid}`);
       console.log("Employee deleted successfully");
       alert("Employee terminated successfully");
     } catch (error) {

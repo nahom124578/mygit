@@ -13,7 +13,7 @@ const useAuthorization = () => {
   useEffect( () => {
     const checkAuthorization = async () => {
       try {
-        const response = await axios.get('/checkSession');
+        const response = await axios.get('/api/checkSession');
 
         if (response.data.loginStatus) {
           setAuthorized(true);

@@ -12,7 +12,7 @@ function ResultReporting() {
         e.preventDefault()
         console.log("this is called")
         try {
-            await axios.post('http://localhost:3001/api/labresult', data)
+            await axios.post('/api/labresult', data)
             alert("Laboratory report successfully sent")
         }
         catch {

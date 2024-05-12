@@ -35,7 +35,7 @@ function LabTestRequestPage() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/api/labTestRequest', formData)
+      const response = await axios.post('/api/labTestRequest', formData)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

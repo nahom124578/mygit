@@ -11,7 +11,7 @@ const PatientInfoPage = () => {
   const fetchPatients = async () => {
     try {
       // Make API call to fetch patient data
-      const response = await fetch('http://localhost:3001/api/list_patient'); // Replace 'api_url_here' with actual API endpoint
+      const response = await fetch('/api/list_patient'); // Replace 'api_url_here' with actual API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch patient data');
       }

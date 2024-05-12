@@ -74,7 +74,7 @@ export default function EmployeeForm() {
       // this below is a backend part so i have just excluded it man i send it in a server side of repository !
       setFormSubmitted(true); // if all condition is pass then submit the form other wise not submutt it to database
       try {
-        const response = await axios.post("http://localhost:8000/message", {
+        const response = await axios.post("/message", {
           firstName,
           lastName,
           role,

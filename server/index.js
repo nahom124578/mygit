@@ -16,6 +16,12 @@ const Feedback = require("./models/Feedback")
 const reportModel = require("./models/LaboratoryReport")
 // pharmacist, medicine model
 const MedicineMode = require("./models/MedicineModel")
+
+// for authentication
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const { patientDashboard, doctorDashboard } = require('./controllers/dashboardController');
+const { loginController, signupController, checkSession, sendPasswordResetMail, verifyOtp, changePassword } = require('./controllers/authController');
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -27,8 +33,34 @@ mongoose.connect('mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1f
 .catch(err => console.error('Failed to connect to MongoDB', err));
 
 // Middleware
-app.use(cors()); // Add this line to enable CORS
-app.use(bodyParser.json()); 
+app.use(cors({ credentials: true, origin: `http://localhost:3000` })); // Add this line to enable CORS
+app.use(bodyParser.json());
+
+// again for authentication
+app.use(session({
+	saveUninitialized: true,
+    resave: false,
+	secret: 'some_secret_keya;a;akjdf',
+	proxy: true,
+	cookie: {
+		secure: true,
+		httpOnly: false,
+		sameSite: 'none'
+	}
+	store: MongoStore.create({ mongoUrl: 'mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System' })
+}));
+
+
+app.post('/api/login', loginController);
+app.post('/api/signup', signupController);
+app.post('/api/forgotPassword', sendPasswordResetMail);
+app.post('/api/verifyOtp', verifyOtp);
+app.post('/api/changePassword', changePassword);
+
+app.get('/api/checkSession', checkSession);
+app.get('/api/dashboard/patient', patientDashboard);
+app.get('/api/dashboard/doctor', doctorDashboard);
+ 
 //imaging
 
 

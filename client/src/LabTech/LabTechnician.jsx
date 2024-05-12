@@ -12,7 +12,7 @@ function LabTechnician(){
 
         const fetchUncheckedRequest = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/labrequest')
+                const response = await axios.get('/api/labrequest')
                 setRequest(response.data);
             } catch (error) {
                 console.error('Failed to fetch unchecked elements:', error);
@@ -24,7 +24,7 @@ function LabTechnician(){
     
     async function deleteRequest(id){
         try {
-            await axios.put(`http://localhost:3001/update/${id}`, { checked: true });
+            await axios.put(`/update/${id}`, { checked: true });
             //setRequest(requests.filter(item => item._id !== id));
         } catch (error) {
             console.error('Failed to update element:', error);
