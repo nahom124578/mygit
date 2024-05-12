@@ -1,35 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 const StaffOverview = () => {
-  const staffCount = 150;
-  const departmentStaff = [
-    { id: 1, name: 'Nurses', staffCount: 80 },
-    { id: 2, name: 'Doctors', staffCount: 40 },
-    { id: 3, name: 'Support Staff', staffCount: 30 },
-  ];
+  const [staffCount, setStaffCount] = useState(0);
+  const [departmentStaff, setDepartmentStaff] = useState([
+    { id: 1, name: 'Nurses', staffCount: -1 },
+    { id: 2, name: 'Doctors', staffCount: -1 },
+    { id: 3, name: 'Support Staff', staffCount: -1 },
+  ]);
 
-  const averagePatientsPerStaff = 8;
+  const [averagePatientsPerStaff, setAveragePatientPerStaff] = useState(-1);
   const averageSalaryPerStaff = 50000;
 
-  const staffData = [
-    {
-      id: 1,
-      name: 'John Doe',
-      department: 'Nurses',
-      role: 'Registered Nurse',
-      phoneNumber: '123-456-7890',
-      email: 'john.doe@example.com',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      department: 'Doctors',
-      role: 'Physician',
-      phoneNumber: '987-654-3210',
-      email: 'jane.smith@example.com',
-    },
-    // Add more staff data here...
-  ];
+  const [staffData, setStaffData] = useState([]);
+   useEffect(() => {
+    axios.get("http://localhost:3008/employees")
+    .then(result => {
+      var staffList = result.data.map((staff, index) => {
+        return {...staff, id: index+1}
+      });
+      setStaffData(staffList)
+      setStaffCount(staffList.length)
+      const number_of_nurse = staffList.filter(staff => staff.role=="nurse").length
+      departmentStaff[0]['staffCount'] = number_of_nurse
+      const number_of_doctor = staffList.filter(staff => staff.role=='doctor').length
+      departmentStaff[1]['staffCount'] = number_of_doctor
+      const number_of_other_staff = staffList.filter((staff => staff.role!='doctor' && staff.role!='nurse')).length
+      departmentStaff[2]['staffCount'] = number_of_other_staff
+      setDepartmentStaff(departmentStaff)
+    })
+
+    axios.get("http://localhost:3008/patient/count")
+    .then(async result => {
+      var numberOfPatient = await result.data.patientCount
+      setAveragePatientPerStaff(Math.ceil(numberOfPatient / staffCount))
+    })
+   }, [])
 
   const [action, setAction] = useState('');
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -122,7 +128,7 @@ const StaffOverview = () => {
               {staffData.map((staff) => (
                 <tr key={staff.id}>
                   <td className="px-4 py-2">{staff.id}</td>
-                  <td className="px-4 py-2">{staff.name}</td>
+                  <td className="px-4 py-2">{staff.firstName+" "+staff.lastName}</td>
                   <td className="px-4 py-2">{staff.department}</td>
                   <td className="px-4 py-2">{staff.role}</td>
                   <td className="px-4 py-2">{staff.phoneNumber}</td>
@@ -163,8 +169,8 @@ const StaffOverview = () => {
             >
               <option value="">Select...</option>
               {staffData.map((staff) => (
-                <option key={staff.id} value={staff.id}>
-                  {staff.name}
+                <option key={staff.id} value={"Select Staff"}>
+                  {staff.firstName+" "+staff.lastName.substring(0,1)}
                 </option>
               ))}
             </select>

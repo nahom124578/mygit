@@ -19,17 +19,16 @@ body {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
- 
+  align-items: center;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .navbar ul li {
-  align-items:end;
     display: flex;
     justify-content: space-around;
-    width: 25%;
+    width: 20%;
     transition: background-color 0.3s ease;
 
 }
@@ -167,7 +166,9 @@ body {
 .filter-input:hover,
 .filter-input:focus {
   transform: translateY(-3px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
 }
 
 /* Style the dropdown options */
@@ -227,13 +228,21 @@ body {
   
   .search-result-item {
     width: calc(50% - 20px); /* Two items per row with spacing */
-    height: 250px;
+    height: 260px;
     margin-bottom: 20px;
     padding: 15px;
     background-color: #f5f5f5;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  .search-result-noitem {
+    width: 70%;
+    height: 400px;
+    background-color: #fff;
+    text-shadow: 8 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: larger;
   }
   
   .search-result-item h3 {
@@ -257,6 +266,14 @@ body {
     text-overflow: ellipsis; /* Add ellipsis for overflow */
   }
 
+  /* Search title Divider */
+  .search-title-divider {
+    border: none;
+    height: 0.5px;
+    background-color: #ccc;
+    width: 90%;
+  }
+
   /* Additions for Search Results Styling */
 .result-footer {
   display: flex;
@@ -278,11 +295,14 @@ body {
 /* Cursor style for clickable result items */
 .search-result-item {
   cursor: pointer;
+  transition: transform 0.2s ease-in;
 }
 
 /* Hover effect for clickable result items */
 .search-result-item:hover {
   background-color: #e0e0e0; /* Change background color on hover */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.04);
 }
 
 /* Styles for pop-up overlay */
@@ -306,9 +326,45 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   max-width: 50%;
+  min-width: 40%;
   min-height: 50%;
-  max-height: 80%;
+  max-height: 87%;
   overflow: auto;
+
+}
+
+/* Styles the pop-up content description */
+.popup-content-description {
+  background-color: #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0.8;
+}
+
+/* Styles the pop-up edit content title */
+.popup-edit-content-title {
+  font-size: 1.6em;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles the pop-up edit content description */
+.popup-edit-content-description {
+  background-color: #eee;
+  width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0.8;
 }
 
 /* Styles for pop-up buttons */
@@ -414,4 +470,4 @@ body {
   .footer-bottom p {
     font-size: 14px;
   }
- 
+  

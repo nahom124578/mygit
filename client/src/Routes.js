@@ -46,6 +46,7 @@ import KPIPage from "./Manager/KPI.jsx";
 import NotificationCenter from "./Manager/NotificationCenter";
 import Notifications from "./Manager/Notifications.jsx";
 import PatientAdmission from "./Manager/PatientAdmission";
+import Manager_Feedback from "./Manager/Feedback.jsx";
 import Resorse from "./Manager/Resorse";
 import Staffoverveiw from "./Manager/Staffoverveiw";
 import Upcome from "./Manager/Upcome.jsx";
@@ -83,6 +84,7 @@ import EmployeeDetail from "./Componenet/EmployeeMain/EmployeeDetail/EmployeDeta
 import FinancePage from "./pages/FinancePage.js";
 
 import ContentA from "./content/Content.js";
+import ContentArchive from "./content/Component/ContentArchive.js";
 import Radiologist from "./Radiology/Home.js";
 import Reception from "./Reception/App.js";
 function Routess() {
@@ -141,11 +143,13 @@ function Routess() {
             <Route path="result" element={<ResultReporting />} />
           </Route>
           <Route path="/patient-addmision" element={<PatientAdmission />} />
+          <Route path="/manager-feedback" element={<Manager_Feedback />} />          
           <Route path="/staff" element={<Staffoverveiw />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/finance" element={<Finance />} />
           <Route path="/content" element={<Content />} />
+          <Route path="/content-archive" element={<ContentArchive />} />
           <Route path="/campaign" element={<Campaign />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/account" element={<Acount />} />
