@@ -1,3 +1,20 @@
+import { MongoClient } from "mongodb";
+import { fileURLToPath } from "url";
+import fs from "fs";
+import {
+  sendVacancy,
+  messageForm,
+  deleteEmployeeById,
+  fetchEmployees,
+  searchById,
+  CountEmploye,
+  LoginForm,
+  GetVacancy,
+  Update,
+  EmployeDisplay,
+  UpdateEmployes,
+  EmployeAttendance,
+} from "./RouteForHrPage.js";
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -158,7 +175,7 @@ app.post('/api/labTestRequest', async (req, res) => {
 });
 
 //configuring the server disk storage for image storage and other files
-const storage = multer.diskStorage(
+const storagee = multer.diskStorage(
   {
     destination: (req, file, cb) => {
       cb(null, './server/Public/images') //first parameter is an error
@@ -169,13 +186,13 @@ const storage = multer.diskStorage(
   }
 )
 
-const upload  = multer({
+const uploadd  = multer({
   storage: storage
 })
 
 
 //for the radiologist image
-app.post('/api/uploadRadImage',upload.single('image'), async (req, res) => {
+app.post('/api/uploadRadImage',uploadd.single('image'), async (req, res) => {
   try {
     const image = req.file
     const imageUrl = `./server/Public/images/${image.filename}`
@@ -339,6 +356,230 @@ app.post('/submit-feedback', async (req, res) => {
     res.status(500).json({ message: 'Failed to submit feedback', error: error.message });
   }
 });
+
+
+//MANAGER SIDE BACKEND IMPLEMENTATION
+let ContentArchiveDB
+
+MongoClient.connect("mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System")
+.then((client) => {
+    ContentArchiveDB = client.db();
+})
+.catch((err) => console.log(err));
+
+app.get('/content_archive', 
+    async (req, res) => {
+        while(!ContentArchiveDB){
+            console.log("Please wait until connection with database is made...")
+            await new Promise(resolve => setTimeout(resolve, 2000))
+        }
+        ContentArchiveDB
+        .collection("Content")
+        .find()
+        .toArray()
+        .then((result) => {
+            res.status(200).send(result) 
+        })
+        .catch(err => {
+            res.status(501).json({err: "Error - could not fetch the documents" })
+        })
+}) 
+
+
+app.get('/content_archive/:input_title', 
+    async (req, res) => {
+        while(!ContentArchiveDB){
+            console.log("Please wait until connection with database is made...")
+            await new Promise(resolve => setTimeout(resolve, 2000))
+        }
+        ContentArchiveDB
+        .collection("Content")
+        .find({title : { $regex: new RegExp(req.params.input_title, 'i') }})
+        .toArray()
+        .then((result) => {
+            res.status(200).send(result) 
+        })
+        .catch(err => {
+            res.status(501).json({err: "Error - could not fetch the documents" })
+        })
+}) 
+
+
+app.get('/patient/count', (req,res) => {
+    MongoClient.connect("mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System")
+    .then(result => {
+        result
+        .db()
+        .collection("patients")
+        .countDocuments()
+        .then(patientCount => {res.json({patientCount})})
+    })
+    .catch(err => console.log("Could not fetch patients' data..."+err))
+})
+
+app.get('/patient', (req, res) => {
+    MongoClient.connect("mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System")
+    .then(result => {
+        result
+        .db()
+        .collection("patients")
+        .find()
+        .toArray()
+        .then(patientListResult => {res.send(patientListResult)})
+    })
+    .catch(err => console.log("Could not fetch patients' data..."+err))
+})
+
+app.get('/feedback', (req, res) => {
+    MongoClient.connect("mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_System")
+    .then(result => {
+        result
+        .db()
+        .collection("Feedback")
+        .find()
+        .toArray()
+        .then(feedbackListResult => {res.send(feedbackListResult)})
+    })
+    .catch(err => console.log("Could not fetch feedback data..."+err))
+})
+    
+app.get('/employees', (req, res) => {
+    MongoClient.connect("mongodb+srv://FirstMongo:mongo123@hospitalmanagementsyste.mq1fdvh.mongodb.net/Hospital_Management_")
+    .then(result => {
+        result
+        .db()
+        .collection("employees")
+        .find()
+        .toArray()
+        .then(staffListResult => {res.send(staffListResult)})
+    })
+    .catch(err => console.log("Could not fetch staffs' data..."+err))
+})
+
+//JOB APPLICATION BACKEND FUNCTIONALITY
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.post("/message", messageForm);
+app.get("/search/:userid", searchById);
+app.get("/employee", fetchEmployees);
+app.get("/getVacancy", GetVacancy);
+app.delete("/remove/:userid", deleteEmployeeById);
+app.post("/vacancy", sendVacancy);
+app.post("/login", LoginForm);
+app.put("/update/:userid", Update);
+// this is one is for a Employe Dave
+/////////////////////////////////////////////
+app.get("/display", EmployeDisplay);
+app.put("/updateEmploye/:id", UpdateEmployes);
+app.get("/count", CountEmploye);
+app.post("/attendace", EmployeAttendance);
+// const finance = require("./Finance/finance");
+import finance from "./component/FinanceController/finance.js";
+// updated
+app.use(finance);
+// the path where the finance frontend page going to be served
+// on my divece the page path = ../softwareProject/my-app/build'
+// app.use(
+//   express.static(path.join(__dirname, "../softwareProject/my-app/build"))
+// );
+// for this part i think you can create your own router for each pages
+app.get(
+  [
+    "/finance",
+    "/paidsalry",
+    "/sold-products",
+    "/salary-payment",
+    "/expense",
+    "/revenue",
+    "/pay-expense",
+    "/sold-products",
+    "/hospitalService",
+  ],
+  (req, res) => {
+    // try {
+    //   res.sendFile(
+    //     path.join(__dirname, "../softwareProject/my-app/build", "index.html")
+    //   );
+    // } catch {
+    //   res.status(404).send("app error");
+    // }
+  }
+);
+const jobApplicationSchema = new mongoose.Schema(
+  {
+    email: String,
+    phoneNumber: String,
+    cvFileName: String,
+    cvFilePath: String,
+  },
+  { timestamps: true }
+);
+
+// Define a model for job applications
+const JobApplication = mongoose.model("JobApplication", jobApplicationSchema);
+
+// Set up multer for handling file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage });
+
+// API endpoint for submitting a job application
+app.post("/submitJobApplication", upload.single("cv"), async (req, res) => {
+  const { email, phoneNumber } = req.body;
+  const cvFileName = req.file.filename;
+  const cvFilePath = req.file.path;
+
+  try {
+    const jobApplication = new JobApplication({
+      email,
+      phoneNumber,
+      cvFileName,
+      cvFilePath,
+    });
+    await jobApplication.save();
+    res.status(201).json({ message: "Job application submitted successfully" });
+  } catch (error) {
+    console.error("Error submitting job application:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// API endpoint to fetch all job applications
+app.get("/jobApplications", async (req, res) => {
+  try {
+    const jobApplications = await JobApplication.find();
+    res.status(200).json(jobApplications);
+  } catch (error) {
+    console.error("Error fetching job applications:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Serve CV files with appropriate headers
+app.get("/downloadCV/:cvFileName", (req, res) => {
+  const cvFileName = req.params.cvFileName;
+  const filePath = path.join(__dirname, "uploads", cvFileName);
+
+  // Check if the file exists
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: "File not found" });
+  }
+
+  // Set Content-Disposition header to force download
+  res.setHeader("Content-Disposition", `attachment; filename=${cvFileName}`);
+  res.sendFile(filePath);
+});
+
 
 // Start the server
 const PORT = 3001;

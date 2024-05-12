@@ -14,7 +14,7 @@ const StaffOverview = () => {
 
   const [staffData, setStaffData] = useState([]);
    useEffect(() => {
-    axios.get("http://localhost:3008/employees")
+    axios.get("/employees")
     .then(result => {
       var staffList = result.data.map((staff, index) => {
         return {...staff, id: index+1}
@@ -30,7 +30,7 @@ const StaffOverview = () => {
       setDepartmentStaff(departmentStaff)
     })
 
-    axios.get("http://localhost:3008/patient/count")
+    axios.get("/patient/count")
     .then(async result => {
       var numberOfPatient = await result.data.patientCount
       setAveragePatientPerStaff(Math.ceil(numberOfPatient / staffCount))

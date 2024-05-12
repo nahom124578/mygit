@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Feedback.css";
+import axios from 'axios'
 
 function Feedback() {
   const [selectedDepartment, setSelectedDepartment] = useState(null);
@@ -45,13 +46,7 @@ function Feedback() {
     };
 
     try {
-      const response = await fetch('/submit-feedback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(feedbackData),
-      });
+      const response = await axios.post('/submit-feedback', feedbackData);
 
       const data = await response.json();
       console.log("Data from backend:", data);

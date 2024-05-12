@@ -7,7 +7,7 @@ const PatientAdmission = () => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3008/patient")
+    axios.get("/patient")
     .then(result => {
       var patientList = result.data.map((patient, index) => {
         return {...patient, id: index}

@@ -6,7 +6,7 @@ const Manager_Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3008/feedback")
+    axios.get("/feedback")
     .then(result => {
       var feedbackList = result.data.map((feedbacks, index) => {
         return {...feedbacks, id: index}
