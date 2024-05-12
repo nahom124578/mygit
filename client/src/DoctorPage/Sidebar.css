@@ -1,7 +1,7 @@
 .sidebar {
     width: 250px; /* Set the width of the sidebar */
     background-color: #043680; /* Blue background color */
-    color: #f8f9fa; /* Light color for text */
+    color: #60f54d; /* Light color for text */
     height: 100%; /* Full height */
     position: fixed; /* Fixed position */
     top: 40px; /* Align below the navbar */
@@ -15,7 +15,7 @@
     font-size: 30px; /* Larger font size for the header */
     font-weight: bold; /* Bold font weight */
     font-style: inherit;
-    background-color: rgb(182, 224, 235);
+    background-color: rgb(116, 220, 247);
     color: #5e0156;
   }
   
@@ -30,7 +30,7 @@
   }
   
   .sidebar-menu li a {
-    color: #f8f9fa; /* Light color for links */
+    color: #1a036d; /* Light color for links */
     text-decoration: none; /* Remove underline from links */
   }
   
