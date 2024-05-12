@@ -5,8 +5,9 @@ function NavBar(){
         <>
             <div className="navbar">
             <ul>
-            <li><a href="#">Content Creation</a></li>
-            <li><a href="#doc">Archive</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="content-creation">Content Creation</a></li>
+            <li><a href="#doctors">Archive</a></li>
             <li><a href="#appointment">Contact</a></li>
             <li><a href="#about">About</a></li>
             </ul>

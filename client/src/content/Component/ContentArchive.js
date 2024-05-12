@@ -1,23 +1,39 @@
-import animationGif from './archive.gif';
+import animationGif from './assets/archive.gif';
 import './ContentArchive.css';
-import NavBar from './Navbar.js';
-import {HeaderTitle, SearchBar, SearchResults} from './ContentArchiveComponents.js';
-import Footer from './Footer.js';
+import NavBar from './Components/Navbar.js';
+import {HeaderTitle, SearchBar, SearchResults} from './Components/ContentArchiveComponents.js';
+import Footer from './Components/Footer.js';
+import { useState} from 'react';
 
 function ContentArchive() {
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] =  useState([]);
+  const [unfilteredSearchResults, setUnfilteredSearchResults] =  useState([]);
+
   return (
       <>
-        <NavBar class="uniq"></NavBar>
+        <NavBar />
         <div className="upperComponents">
         <div className="left-content">
           <HeaderTitle />
-          <SearchBar />
+          <SearchBar searchQuery={searchQuery} 
+                     setSearchQuery={setSearchQuery} 
+                     searchResults={searchResults}
+                     setSearchResults={setSearchResults}
+                     unfilteredSearchResults={unfilteredSearchResults}
+                     setUnfilteredSearchResults={setUnfilteredSearchResults}/>
         </div>
         <div className="animation-container">
           <img src={animationGif} alt="Animation" className="animation-gif" />
         </div>
       </div>
-        <SearchResults/>
+        <SearchResults searchQuery={searchQuery}
+                       setSearchQuery={setSearchQuery}
+                       searchResults={searchResults}
+                       setSearchResults={setSearchResults}
+                       unfilteredSearchResults={unfilteredSearchResults}
+                       setUnfilteredSearchResults={setUnfilteredSearchResults}/>
         <Footer />
       </>
   );

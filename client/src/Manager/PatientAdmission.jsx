@@ -1,23 +1,20 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
+import axios from "axios";
+
 
 const PatientAdmission = () => {
-  const patients = [
-    {
-      id: 1,
-      name: 'John Doe',
-      dateOfBirth: '1990-01-01',
-      phoneNumber: '123-456-7890',
-      email: 'john.doe@example.com',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      dateOfBirth: '1995-05-10',
-      phoneNumber: '987-654-3210',
-      email: 'jane.smith@example.com',
-    },
-    // Add more patients here...
-  ];
+  const [patients, setPatients] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3008/patient")
+    .then(result => {
+      var patientList = result.data.map((patient, index) => {
+        return {...patient, id: index}
+      });
+      setPatients(patientList)
+    })
+  }, [])
 
   return (
     <div className="bg-white py-8 md:py-12">
@@ -41,8 +38,8 @@ const PatientAdmission = () => {
             <tbody>
               {patients.map((patient) => (
                 <tr key={patient.id}>
-                  <td className="px-4 py-2">{patient.name}</td>
-                  <td className="px-4 py-2">{patient.dateOfBirth}</td>
+                  <td className="px-4 py-2">{`${patient.firstName} ${patient.lastName}`}</td>
+                  <td className="px-4 py-2">{patient.dob}</td>
                   <td className="px-4 py-2">{patient.phoneNumber}</td>
                   <td className="px-4 py-2">{patient.email}</td>
                 </tr>
