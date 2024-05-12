@@ -118,10 +118,10 @@ const SearchResults = ({searchQuery, searchResults, setSearchResults, unfiltered
   useEffect(() => {
     var searchLink = ''
     if(searchQuery===""){
-      searchLink = "http://127.0.0.1:3008/content_archive"
+      searchLink = "/content_archive"
     }
     else{
-      searchLink = `http://127.0.0.1:3008/content_archive/${searchQuery}`
+      searchLink = `/content_archive/${searchQuery}`
     }
     axios.get(searchLink)
     .then(result => {
