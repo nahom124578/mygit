@@ -15,29 +15,37 @@ const DoctorPage = () => {
 
       <div className="doctor-section">
         <div className="action-column">
-          <Link to="/App1">
+          <div><Link to="/App1">
             <button className="action-button">Patient Information</button>
-          </Link>
-          <Link to="/LabTestRequestPage">
+          </Link></div>
+          <div><Link to="/LabTestRequestPage">
             <button className="action-button">Laboratory Request</button>
-          </Link>
-          <Link to="/Medical">
+          </Link></div>
+          <div><Link to="/Medicalimagingrequest">
             <button className="action-button">Imaging Request</button>
-          </Link>
-          <Link to="/PrescriptionFormPage">
+          </Link></div>
+          <div><Link to="/PrescriptionFormPage">
             <button className="action-button">Prescription</button>
-          </Link>
+          </Link></div>
+         
+        
+          
+          
+          
         </div>
         <div className="action-column">
-          <Link to="#">
+        <div><Link to="/laboratoryresult">
             <button className="action-button">Laboratory Result</button>
-          </Link>
-          <Link to="#">
+          </Link></div>
+        <div><Link to="/imagingresult">
             <button className="action-button">Imaging Result</button>
-          </Link>
-          <Link to="/ReferralForm">
+          </Link></div>
+        <div><Link to="/ReferralForm">
             <button className="action-button">Referral</button>
-          </Link>
+          </Link></div>
+          
+          
+          
         </div>
       </div>
     </div>

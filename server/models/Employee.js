@@ -155,6 +155,121 @@ const feedbackSchema = new mongoose.Schema({
           require: true,
         },
       });
+      const reportSchema = new mongoose.Schema({
+        patientID: {
+            type: String,
+            required: true // patientID is required
+        },
+        requestID: {
+            type: String,
+            required: true // requestID is required
+        },
+        testDate: {
+            type: Date,
+            default: Date.now // Set default value to current timestamp
+        },
+        testName: {
+            type: String,
+            default: null // Default value for testName is null
+        },
+        testType: {
+            type: String,
+            default: null // Default value for testType is null
+        },
+        testValue: {
+            type: String,
+            default: null // Default value for testValue is null
+        },
+        unit: {
+            type: String,
+            default: null // Default value for unit is null
+        },
+        person: {
+            type: String,
+            required: true // person is required
+        },
+        ID: {
+            type: String,
+            required: true // ID is required
+        }
+    });
+    const requestSchema = new mongoose.Schema({
+      checked: Boolean, // Whether the request has been checked
+      patientName: String, // Name of the patient
+      patientID: String, // ID of the patient
+      doctorName: String, // Name of the doctor
+      doctorID: String, // ID of the doctor
+      labTestType: String, // Type of lab test requested
+      testDate: Date, // Date of the test
+      urgency: Boolean, // Whether the request is urgent
+  });
+  const ImgReqSchema = new Schema({
+    patient_name: {
+        type: String,
+        required: true,
+        minLength: 4,
+        maxLength: 30
+    },
+    physician_name: {
+        type : String,
+        required: true,
+        minLength: 4,
+        maxLength: 30
+
+    },
+    physician_contact: {
+        type: String,
+        required: true,
+        minLength: 10,
+        maxLength: 10
+
+    },
+    dob: {
+        type: Date,
+        required: true
+    },
+    
+    gender: {
+        type : String,
+        required: true,
+        enum: ['Male', 'Female']
+    },
+    imaging_procedure: {
+        type: String,
+        required: true,
+        enum: ['CT Scan', 'MRI', 'X-Ray', 'Ultrasound']
+
+    },
+    clinical_indication: {
+        type: String,
+        required: true,
+        minLength: 10,
+        maxLength: 1024
+
+    },
+    special_instructions: {
+        type: String,
+        required: true,
+        minLength: 10,
+        maxLength: 1024
+
+    }
+})
+
+const ImageReq =   mongoose.model("imagings", ImgReqSchema);
+
+
+
+
+
+  
+  // Create a Mongoose model based on the request schema
+  const requestModel = mongoose.model("LabRequest", requestSchema);
+  
+    
+    // Create a Mongoose model based on the schema
+    const reportModel = mongoose.model("LabReport", reportSchema);
+    
       
       const User = mongoose.model("User", schema); // this is intended to create a collection in database ....
       const employes_list = mongoose.model("employes_list", Hiremploye);
@@ -172,4 +287,7 @@ module.exports = Feedback;
 module.exports =  User;
 module.exports =employes_list;
 module.exports =vacancyRecord;
+module.exports = reportModel;
+module.exports= requestModel;
+module.exports = ImageReq;
       

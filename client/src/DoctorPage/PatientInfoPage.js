@@ -1,5 +1,5 @@
 // Import necessary modules
-import React, { useState, useEffect } from 'react'; // Import React and hooks for state and effects
+import React, { useEffect, useState } from 'react'; // Import React and hooks for state and effects
 import './styles.css'; // Import CSS file for styling
 
 // Define PatientInfoPage functional component
@@ -11,7 +11,7 @@ const PatientInfoPage = () => {
   const fetchPatients = async () => {
     try {
       // Make API call to fetch patient data
-      const response = await fetch('api_url_here'); // Replace 'api_url_here' with actual API endpoint
+      const response = await fetch('/api/list_patient'); // Replace 'api_url_here' with actual API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch patient data');
       }
@@ -39,7 +39,7 @@ const PatientInfoPage = () => {
         {/* Display patient information in a table */}
         <div className="patient-info1">
           <table>
-            <thead>
+            <thead id="test_1234">
               <tr>
                 <th>Patient ID</th>
                 <th>Name</th>
@@ -50,17 +50,15 @@ const PatientInfoPage = () => {
               </tr>
             </thead>
             <tbody>
-              {/* Dynamically render patient information */}
               {patients.map((patient, index) => (
                 <tr key={index}>
                   <td>{patient.id}</td>
-                  <td>{patient.name}</td>
-                  <td>{patient.dateOfBirth}</td>
+                  <td>{patient.firstName + " " + patient.lastName}</td>
+                  <td>{patient.dob}</td>
                   <td>{patient.gender}</td>
-                  <td>{patient.contact}</td>
-                  <td>{patient.address}</td>
-                </tr>
-              ))}
+                  <td>{patient.emergencyContact}</td>
+                  <td>{patient.streetAddress}</td>
+                </tr>))}
             </tbody>
           </table>
         </div>

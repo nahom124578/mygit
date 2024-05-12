@@ -1,31 +1,24 @@
+import './New.css'
 import { useState } from 'react';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.module.css';
-import './New.css';
+import axios from 'axios'
 export default function Cancel() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        if (name === 'name') {
-        setName(value);
-        } else if (name === 'email') {
-        setEmail(value);
+    const [AppId, setAppId] = useState('')
+    async function handleSubmit(e) {
+        e.preventDefault()
+        if (!AppId) {
+            alert("You didn't fill an Appointment ID to Cancel.")
+            return; // Prevent unnecessary API call if no ID is provided
+          }
+        try {
+            await axios.delete(`/api/deleteApp/${AppId}`)
+            alert('Appointment Cancelled Successfully')
+            setAppId('')
         }
-    };
-
-    const dateoptions = Array.from({ length: 31 }, (_, i) => (
-        <option key={i + 1} value={i + 1}>
-          {i + 1}
-        </option>
-    ));
-
-    const months = [ 'January','February','March','April','May', 'June','July','August',
-        'September','October', 'November','December'];
-
-    const years = Array.from({ length: 27 }, (_, i) => 2024 + i); // Years from 2024 to 2050
-
+        catch {
+            alert('Unsuccessful cancellation. Try again later, thank you.')
+        }
+    }
     return (
         <div className="new-main">
             <label> Name </label>
@@ -36,14 +29,14 @@ export default function Cancel() {
             </div>
             <label>Appointment Number</label>
             <div className='name-input'>
-                <input type = 'text' id = 'city'></input>
+                <input type = 'text' id = 'appnum' onChange = {e => setAppId(e.target.value)}></input>
             </div>
             <label>Appointment Date</label>
             <div className='name-input'>
-                <ReactDatePicker />
+                <input type = 'date'></input>
             </div>
             <div className='but-cont'>
-                <button className='new-cancel'>
+                <button onClick={handleSubmit}>
                     Submit
                 </button>
             </div>

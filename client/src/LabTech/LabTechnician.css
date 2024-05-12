@@ -7,29 +7,37 @@
 
 
 .labpage{
-    
-    background-color: hsla(144, 24%, 96%, 0.847);
     min-width: 60%;
     max-width: 500px;
     min-height: 60vh;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px rebeccapurple , -2px -2px 5px rebeccapurple;
-    
     height: auto;
-    box-shadow: px 3px 10px wheat , -3px -3px 10px wheat , 3px 3px 10px rgb(255, 72, 0) , -3px -3px 10px green;
+
+}
+
+.announcement{
+    background-color: rgb(234, 234, 242);
+    box-shadow: 2px 2px 5px rgb(236, 225, 225), -2px -2px 5px rgb(197, 175, 175);
+    border-radius: 20px;
+}
+
+.todo-list{
+    background-color: rgb(234, 234, 242);
+    box-shadow: 2px 2px 5px rgb(236, 225, 225), -2px -2px 5px rgb(197, 175, 175);
+    border-radius: 20px;
 }
 .title1{
     background-color: rgb(45, 61, 76);
     text-align: center;
-    border-radius: 20px
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     
 
 }
 
 .element{
-    background-color: rgb(234, 234, 242);
     min-height: 150px;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     margin-bottom: 30px;
 }
 
@@ -37,13 +45,18 @@
 .title2{
     background-color: rgb(45, 61, 76);
     text-align: center;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
 }
 
 
 .list{
-    background-color: rgb(241, 241, 245);
+    margin: 10px;
     min-height: 150px;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     margin-bottom: 30px;
+    
+    
 }

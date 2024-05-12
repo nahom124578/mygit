@@ -1,12 +1,24 @@
 import React from "react";
 import "./ImagingResult.css";
+import {useState} from React
+import axios from 'axios'
 import { Link } from "react-router-dom"; // Import Link component
 
 const ImagingResult = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle form submission
-  };
+
+  const [detail, setDetail] = React.useState({})
+  function handleChange(e) {
+    e.preventDefault()
+    setDetail({...detail, [e.target.id]:e.target.value})
+  }
+  async function handleSubmit() {
+    const formData = new FormData()
+    formData.append('image', detail.image)
+    formData.append('details', detail.details)
+    await axios.post('/api/uploadRadImage', formData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
 
   return (
     <div className="imaging-result-page">
@@ -28,10 +40,10 @@ const ImagingResult = () => {
       </nav>
       <div className="content">
         <h1>Upload Imaging Result</h1>
-        <form id="imagingResultForm" onSubmit={handleSubmit}>
+        <form id="imagingResultForm">
           <div>
             <label htmlFor="resultFile">Select Image File:</label>
-            <input type="file" id="resultFile" name="resultFile" />
+            <input type="file" id="image" name="image" onChange = {e => handleChange(e)} />
           </div>
           <div>
             <label htmlFor="details">Details:</label>
@@ -41,9 +53,10 @@ const ImagingResult = () => {
               rows="5"
               cols="50"
               placeholder="Enter Imaging Result Details Here......"
+              onChange = {e => handleChange(e)}
             ></textarea>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick = {handleSubmit}>Submit</button>
         </form>
       </div>
       <footer>

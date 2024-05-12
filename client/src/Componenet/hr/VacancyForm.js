@@ -22,7 +22,7 @@ const VacancyForm = () => {
       publishDate,
     });
     try {
-      await axios.post("http://localhost:8000/vacancy", {
+      await axios.post("/vacancy", {
         jobTitle,
         jobDescription,
         requiredQualifications,

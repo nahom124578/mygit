@@ -1,8 +1,25 @@
 import React from "react";
 import "./ImagingRequest.css";
+import useState from 'react';
+import useEffect from 'react';
 import { Link } from "react-router-dom"; // Import Link component
+import axios from 'axios'
 
 const ImagingRequest = () => {
+  const [request, setRequest] = useState(null)
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await axios.get('/api/imagingRequest')
+      const json = await response.json()
+
+      if (response.ok) { //this means that we have succesfully fetched the data and want to do state manipulation locally
+        console.log(json.data)
+        setRequest(json.data)
+      }
+    }
+    fetchRequests()
+  },[])
+
   return (
     <div className="imaging-request-page">
       <nav>

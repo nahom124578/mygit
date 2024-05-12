@@ -1,9 +1,9 @@
 const express = require('express');
-const LabProcess = require('../models/Employee');
+const LabProcess = require('./models/db');
 
 const router = express.Router();
 
-router.post('/labTestRequest', async (req, res) => {
+app.post('/labTestRequest', async (req, res) => {
   try {
     const {
       patientName,
@@ -32,7 +32,6 @@ router.post('/labTestRequest', async (req, res) => {
     console.error('Error inserting document:', error);
     res.status(500).json({ message: 'Failed to submit lab test request' });
   }
-})
+});
 
-
-module.exports =router;
+module.exports = router;

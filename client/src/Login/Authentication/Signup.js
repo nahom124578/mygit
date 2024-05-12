@@ -64,9 +64,9 @@ const Signup = () => {
         event.preventDefault();
         if (validate()) {
             try {
-                const response = await axios.post('http://localhost:3001/api/signup', formData);
+                const response = await axios.post('/api/signup', formData);
                 const role = response.data.role;
-                const roleUrl = `/dashboard/${role}`;
+                const roleUrl = `/${role}`;
                 navigate(roleUrl); 
             } catch (err) {
                 console.error(err.response.data);
@@ -78,7 +78,7 @@ const Signup = () => {
     if (loading) {
         return <div></div>
     } else if (authorized) {
-        const roleUrl = `/dashboard/${role}`;
+        const roleUrl = `/${role}`;
         return navigate(roleUrl);
     }
     return (

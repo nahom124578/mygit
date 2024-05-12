@@ -34,9 +34,9 @@ const Login = () => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length === 0) {
             try {
-                const response = await axios.post( '/login', { username: username, password: password });
+                const response = await axios.post( '/api/login', { username: username, password: password });
                 const role = response.data.role;
-                const roleUrl = `/dashboard/${role}`;
+                const roleUrl = `/${role}`;
                 navigate(roleUrl);
             } catch (err) {
                 console.error(err);
@@ -49,7 +49,7 @@ const Login = () => {
     if (loading) {
         return <div></div>;
     } else if (authorized) {
-        const roleUrl = `/dashboard/${role}`;
+        const roleUrl = `/${role}`;
         return navigate(roleUrl);
     }
     return (
