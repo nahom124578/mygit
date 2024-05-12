@@ -97,6 +97,9 @@ import FinancePage from './pages/FinancePage.js';
 import ContentA from "./content/Content.js";
 import Radiologist from "./Radiology/Home.js";
 import Reception from "./Reception/App.js";
+
+// 
+import AnnouncementPage from '../src/PatientPage/AnnouncementPage.js'
 function Routess() {
     return (
 
@@ -118,6 +121,8 @@ function Routess() {
                     <Route path="/signup" element={<Signup />} />
                     {/* <Route path="/dashboard" element={<Dashboard />} /> */}
                     <Route path="/patient" element={<Patient />} />
+                    <Route path="/announcement" element={< AnnouncementPage/>} />
+
                     <Route path="manager/feedback" element={<Feedback></Feedback>} />
                     <Route path="/make-appointment" element={<AppMash></AppMash>} />
                     <Route path="/bookappointment/new" element={<New></New>} />
