@@ -1,136 +1,179 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const ForPhoto = () => {
-  const [employees, setEmploye] = useState([]);
-  const [bonus, setBonus] = useState("");
-  const [punishment, SetPunishment] = useState("");
-  // first  of all we should have 2 use a useeffect to get data from  databse and we use a state inorder to stores a fetche data ok man of God that is possible !
+
+const FetchData = () => {
+  const [employees, setEmployees] = useState([]); // to store data from DB
+  const [editedEmployee, setEditedEmployee] = useState(null);
+  const [editedBonus, setEditedBonus] = useState("");
+  const [editedPunishment, setEditedPunishment] = useState("");
+
+  // Fetch data from database on component mount
   useEffect(() => {
-    const fetchEmployees = async (req, resp) => {
+    const fetchEmployees = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/employee"); // this is a http request to be sent via a axios to a server ok man of God i mean that is a Api
-        setEmploye(response.data); // this is a Json obect ok man then converted to array in front end because we have initialazed it with a array ::
+        const response = await axios.get("http://localhost:8000/employee");
+        setEmployees(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchEmployees();
-  });
-  const handleDelete = async (userid) => {
-    console.log("Clicked !!");
-    // alert("Are u sure to delete this guys ??");
+  }, []);
+
+  const handleEdit = (employee) => {
+    setEditedEmployee(employee);
+    setEditedPunishment(employee.punishment);
+    setEditedBonus(employee.bonus);
+  };
+
+  const handleSave = async () => {
     try {
-      setEmploye(employees.filter((x) => x.userid !== userid)); // removes all items that is not equalt to a userid
-      await axios.delete(`http://localhost:8000/remove/${userid}`);
-      alert("submited Succesfully !");
+      await axios.put(`http://localhost:8000/update/${editedEmployee.userid}`, {
+        punishment: editedPunishment,
+        bonus: editedBonus,
+      });
+      alert("Employee updated successfully!");
+      const response = await axios.get("http://localhost:8000/employee");
+      setEmployees(response.data);
+      setEditedEmployee(null);
     } catch (error) {
-      console.log(" not deleted properly guys !!");
+      console.log("Error updating employee:", error);
     }
   };
+
+  const handleDelete = async (userid) => {
+    const shouldTerminate = window.confirm(
+      "Are you sure you want to terminate this employee?"
+    );
+    if (!shouldTerminate) {
+      return;
+    }
+    try {
+      setEmployees(employees.filter((x) => x.userid !== userid));
+      await axios.delete(`http://localhost:8000/remove/${userid}`);
+      alert("Employee terminated successfully!");
+    } catch (error) {
+      console.log("Error deleting employee:", error);
+    }
+  };
+
   return (
     <>
-      <div className="container mx-auto px-4 py-2">
-        <h1>this below is a fetched employe listed from a database </h1>
-        <h2 className="text-2xl font-bold mb-4">Employee List</h2>
-        <div className="overflow-x-auto">
-          <table className="table-auto border-collapse border border-gray-800 w-auto mx-10">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 mx-40 ">
-                  First Name
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Last Name
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  User ID
-                </th>
-
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Role
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Salary
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Emergency Contact
-                </th>
-                {/* <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Email
-                </th> */}
-                {/* <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Address
-                </th> */}
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  punishment
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  bonus
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  Terminate
-                </th>
-                <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  edit
-                </th>
-                {/* <th className="border border-gray-800 px-4 py-2 sm:w-1/6 ">
-                  edit
-                </th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {employees.map((employee) => (
-                <tr key={employee.userid} className="bg-gray-100">
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.firstName}
-                  </td>
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.lastName}
-                  </td>
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.userid}
-                  </td>
-                  {/* <td className="border border-gray-800 px-4 py-2">
-                    {employee.birthday}
-                  </td> */}
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.role}
-                  </td>
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.salary} birr
-                  </td>
-                  <td className="border border-gray-800 px-4 py-2">
-                    {employee.emergencyContact}
-                  </td>
-                  {/* <td className="border border-gray-800 px-4 py-2">
-                    {employee.email}
-                  </td> */}
-                  {/* <td className="border border-gray-800 px-4 py-2">
-                    {employee.address}
-                  </td> */}
-                  <td className="border border-gray-800 px-4 py-2">0</td>
-                  <td className="border border-gray-800 px-4 py-2">0</td>
-                  <td className="border border-gray-800 px-4 py-2">
+      <div className="mt-10 px-6 mx-auto font-semibold">
+        Here below is All our Employes In this Hospital{" "}
+      </div>
+      {/* <div className=" mx-auto px-4 py-2 mb-20 font-sans"> */}
+      <div className="overflow-x-auto font-sans">
+        <table className="table-auto border-collapse border border-gray-800 w-full text-sm md:text-base sm:text-justify sm:text-sm sm:overflow-x-auto md:overflow-x-auto">
+          <thead>
+            <tr className="bg-gray-200 font-medium">
+              <th className="border border-gray-800 px-4 py-2 hidden sm:table-cell">
+                Seq. No
+              </th>
+              <th className="border border-gray-800 px-4 py-2">First Name</th>
+              <th className="border border-gray-800 px-4 py-2">Last Name</th>
+              <th className="border border-gray-800 px-4 py-2">User ID</th>
+              <th className="border border-gray-800 px-4 py-2">Role</th>
+              <th className="border border-gray-800 px-4 py-2">
+                Salary (Birr)
+              </th>
+              <th className="border border-gray-800 px-4 py-2">
+                Emergency Contact
+              </th>
+              <th className="border border-gray-800 px-4 py-2">Bonus</th>
+              <th className="border border-gray-800 px-4 py-2">Punishment</th>
+              <th className="border border-gray-800 px-4 py-2">Edit</th>
+              <th className="border border-gray-800 px-4 py-2">Terminate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((employee, index) => (
+              <tr key={employee.userid} className="bg-gray-100">
+                <td className="border border-gray-800 px-4 py-2 hidden sm:table-cell">
+                  {index + 1}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.firstName}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.lastName}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.userid}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.role}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.salary}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {employee.emergencyContact}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {editedEmployee === employee ? (
+                    <input
+                      type="text"
+                      value={editedBonus}
+                      className="outline-none bg-gray-300"
+                      onChange={(e) => setEditedBonus(e.target.value)}
+                    />
+                  ) : (
+                    employee.bonus
+                  )}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {editedEmployee === employee ? (
+                    <input
+                      type="text"
+                      value={editedPunishment}
+                      className="outline-none bg-gray-300"
+                      onChange={(e) => setEditedPunishment(e.target.value)}
+                    />
+                  ) : (
+                    employee.punishment
+                  )}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  {editedEmployee === employee ? (
+                    <div>
+                      <button
+                        onClick={handleSave}
+                        className="bg-gray-300 hover:bg-gray-700 text-white font-bold py-2 px-4 mb-2 rounded"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => setEditedEmployee(null)}
+                        className="bg-gray-300 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
                     <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                      onClick={() => handleDelete(employee.userid)}
+                      onClick={() => handleEdit(employee)}
+                      className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     >
-                      Terminate
-                    </button>
-                  </td>
-                  <td className="border border-gray-800 px-4 py-2">
-                    <button className="bg-black hover:bg-red-700 text-white font-bold py-1 px-2 mt-2 rounded mb-3 flex mx-4">
                       Edit
                     </button>
-                  </td>{" "}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  )}
+                </td>
+                <td className="border border-gray-800 px-4 py-2">
+                  <button
+                    onClick={() => handleDelete(employee.userid)}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Terminate
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
 };
-// export { handleDelete };
-export default ForPhoto;
+
+export default FetchData;

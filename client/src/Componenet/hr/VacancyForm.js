@@ -8,6 +8,7 @@ const VacancyForm = () => {
   const [requiredQualifications, setRequiredQualifications] = useState("");
   const [preferredQualifications, setPreferredQualifications] = useState("");
   const [applicationInstructions, setApplicationInstructions] = useState("");
+  const [Deadline, setDeadline] = useState("");
   const [publishDate, setPublishDate] = useState("");
   const [formSubmitted, setformSubmitted] = useState(false);
   const handleSubmit = async (e) => {
@@ -28,6 +29,7 @@ const VacancyForm = () => {
         preferredQualifications,
         applicationInstructions,
         publishDate,
+        Deadline,
       });
       alert("sunmitted successfully !!");
       setformSubmitted(true);
@@ -43,7 +45,7 @@ const VacancyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-32">
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
       <div className="mb-4">
         <label
           htmlFor="jobTitle"
@@ -128,7 +130,22 @@ const VacancyForm = () => {
           htmlFor="publishDate"
           className="block text-gray-700 font-bold mb-2"
         >
-          Publish Date (Optional)
+          Publish Date
+        </label>
+        <input
+          type="date"
+          id="publishDate"
+          value={Deadline}
+          onChange={(e) => setDeadline(e.target.value)}
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="publishDate"
+          className="block text-gray-700 font-bold mb-2"
+        >
+          Deadline
         </label>
         <input
           type="date"

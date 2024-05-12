@@ -1,24 +1,26 @@
 import React, { useState } from "react";
+import axios from "axios";
 
+export default function EmployeeDetaileInfo({ product }) {
+  const [firstName, setFirstName] = useState(`${product.firstName}`);
+  const [lastName, setLastName] = useState(`${product.lastName}`);
+  const [contract, setContract] = useState(`${product.lastName}`);
+  const [phoneNumber, setPhoneNumber] = useState(`${product.phoneNumber}`);
+  const [emergencyContact, setEmergencyContact] = useState(
+    `${product.emergencyContact}`
+  );
+  const [salary, setSalary] = useState(`${product.salary}`);
+  const [department, setDepartment] = useState(`${product.department}`);
+  const [email, setEmail] = useState(`${product.email}`);
 
-
-export default function EmployeeDetaileInfo({product}) {
-  const [firstName, setFirstName] = useState(`${product.name}`);
-  const [lastName, setLastName] = useState("");
-  const [contract, setContract] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [emergencyContact, setEmergencyContact] = useState("");
-  const [salary, setSalary] = useState("");
-  const [department, setDepartment] = useState("");
-  const [email, setEmail] = useState("");
-  
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [gender, setGender] = useState(`${product.sex}`);
-  const [birthday, setBirthday] = useState("");
-  const [address, setAddress] = useState(""); 
-  const [bonus, setBonus] = useState(0); 
-  const [tax, setTax] = useState("");
-  const [showAdditionalAttributes, setShowAdditionalAttributes] =useState(false); 
+  const [gender, setGender] = useState(product.gender === "Male");
+  const [birthday, setBirthday] = useState(`${product.birthday}`);
+  const [address, setAddress] = useState(`${product.address}`);
+  const [bonus, setBonus] = useState(`${product.bonus}`);
+  const [tax, setTax] = useState(`${product.address}`);
+  const [showAdditionalAttributes, setShowAdditionalAttributes] =
+    useState(false);
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
   };
@@ -53,13 +55,38 @@ export default function EmployeeDetaileInfo({product}) {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+  console.log(product);
 
-  // this is just for testing purpose i mean when a button is clicked it should have contain all necessary information to be sent to database
   const handleSubmit = (e) => {
-    
-    let isValid = true;
+    e.preventDefault();
 
-    // Validation logic this is just regular expression that we use to match input filed with this then if it equals then isValid =true then form can be submutted !!
+    const updatedData = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      tax: tax,
+      salary: salary,
+      emergencyContact: emergencyContact,
+      department: department,
+      gender: gender,
+      birthday: birthday,
+      address: address,
+      tax: tax,
+    };
+
+    // Send a PUT request to update the data
+    axios
+      .put(`http://localhost:8000/updateEmploye/${product._id}`, updatedData)
+      .then((response) => {
+        // console.log("Data updated successfully:", response.data);
+        setFormSubmitted(true);
+      })
+      .catch((error) => {
+        console.error("Error updating data:", error);
+      });
+
+    let isValid = true;
     const nameRegex = /^[A-Za-z]+$/;
     const phoneRegex = /^[0-9]+$/;
     if (!firstName.match(nameRegex)) {
@@ -82,11 +109,9 @@ export default function EmployeeDetaileInfo({product}) {
       alert("Please enter a valid emergency contact number");
       isValid = false;
     }
-
     if (isValid) {
-      setFormSubmitted(true); // if alll condition is pass then submit the form other wise not submutt it to database
+      setFormSubmitted(true);
     }
-    // Validation logic here
   };
 
   return (
@@ -139,7 +164,6 @@ export default function EmployeeDetaileInfo({product}) {
 
             {showAdditionalAttributes && contract === "Doctors" && (
               <div className="w-full px-3 mb-6">
-                {/* Additional attributes for Doctors */}
                 <label className="block text-gray-700">Specialization</label>
                 <input
                   type="text"
@@ -150,7 +174,6 @@ export default function EmployeeDetaileInfo({product}) {
             )}
             {showAdditionalAttributes && contract === "Radiologist" && (
               <div className="w-full px-3 mb-6">
-                {/* Additional attributes for Doctors */}
                 <label className="block text-gray-700">Specialization</label>
                 <input
                   type="text"
@@ -189,6 +212,7 @@ export default function EmployeeDetaileInfo({product}) {
               <label className="block text-gray-700">
                 Total Salary in Birr:
               </label>
+
               <input
                 type="number"
                 value={salary}
@@ -233,8 +257,6 @@ export default function EmployeeDetaileInfo({product}) {
               />
             </div>
           </div>
-
-          
 
           <div className="flex flex-wrap -mx-3">
             <div className="w-full px-3 mb-6">
