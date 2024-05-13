@@ -1,7 +1,7 @@
 // this below is intended for processing a front end request which is intended to make some difference betwen me and u ok man that may not be possible ok man ok man ok man ok man if that is a music its make me to thinks so much ok mn
 // i have just created this files to simply and make a code to easly manage it
-import { Employe, vacancyRecord } from "./component/Mongodb.js"; // this will make a server to connect to a database systems
-import { MongoClient, ObjectId } from "mongodb";
+const { Employe, vacancyRecord } = require("./component/Mongodb.js"); // this will make a server to connect to a database systems
+const { MongoClient, ObjectId } = require("mongodb");
 let MyConnectionDB;
 let MyAttendanceConnectionDB;
 const mongoconnection =

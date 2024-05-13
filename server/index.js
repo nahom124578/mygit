@@ -1,7 +1,7 @@
-import { MongoClient } from "mongodb";
-import { fileURLToPath } from "url";
-import fs from "fs";
-import {
+const { MongoClient } = require("mongodb");
+const { fileURLToPath } = require("url");
+const fs  = require("fs");
+const {
   sendVacancy,
   messageForm,
   deleteEmployeeById,
@@ -14,7 +14,7 @@ import {
   EmployeDisplay,
   UpdateEmployes,
   EmployeAttendance,
-} from "./RouteForHrPage.js";
+} = require("./RouteForHrPage.js");
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -187,7 +187,7 @@ const storagee = multer.diskStorage(
 )
 
 const uploadd  = multer({
-  storage: storage
+  storage: storagee
 })
 
 
@@ -474,7 +474,7 @@ app.put("/updateEmploye/:id", UpdateEmployes);
 app.get("/count", CountEmploye);
 app.post("/attendace", EmployeAttendance);
 // const finance = require("./Finance/finance");
-import finance from "./component/FinanceController/finance.js";
+const finance  = require("./component/FinanceController/finance.js");
 // updated
 app.use(finance);
 // the path where the finance frontend page going to be served
