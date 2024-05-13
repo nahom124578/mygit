@@ -64,9 +64,24 @@ import Acount from "./Manager/Acount.jsx";
 import EmployeecontextProvider from "./Componenet/EmployeeMain/Context/Employeecontext.js";
 import Employee from "./pages/employee";
 // import FinancePage from './pages/FinancePage.js';
+<<<<<<< HEAD
 import HomeAdmin from "./pages/Home";
 import Hr from "./pages/Hr.js";
 import JobApplicationsList from "./Componenet/hr/JobApplicantView.js";
+=======
+import HomeAdmin from './pages/Home';
+import Hr from './pages/Hr.js';
+
+// pharmacist Routes start
+import HomeToDo from './Pharmacy/HomeToDo.jsx';
+import Medicine from './Pharmacy/Medicine.jsx';
+import ProfilePharma from './Pharmacy/ProfilePharma.jsx';
+import PharmaHome from './Pharmacy/PharmaHome.jsx';
+// end
+
+
+
+>>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
 import EmployeeTable from "../src/Componenet/Finance/EmployeeTable.jsx";
 import Expense from "../src/Componenet/Finance/Expense";
 import HospitalService from "../src/Componenet/Finance/HospitalService";
