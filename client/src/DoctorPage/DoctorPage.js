@@ -8,7 +8,7 @@ const DoctorPage = () => {
     <div>
       <Sidebar/>
       <div className="hospital-info">
-        <h2> አዲስ ህይወት አጠቃላይ ሆስፒታል</h2>
+        <h2> ፭ ኪሎ አጠቃላይ ሆስፒታል</h2>
         <p> we care and it shows</p>
         
       </div>
