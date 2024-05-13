@@ -40,9 +40,9 @@ const Home = () => {
           </span>
         </h1>
         <p className='home-text'>
-          At New Life General Hospital, your health and well-being are our top priorities. We are dedicated to providing exceptional medical care with compassion, expertise, and state-of-the-art technology.
+          At Amist Kilo General Hospital, your health and well-being are our top priorities. We are dedicated to providing exceptional medical care with compassion, expertise, and state-of-the-art technology.
         </p>
-        <p>በአዲስ ህይወት አጠቃላይ ሆስፒታል፣ ጤናዎ እና ደህንነትዎ ቅድሚያ የምንሰጣቸው ጉዳዮች ናቸው. በርህራሄ፣ በእውቀት እና በዘመናዊ ቴክኖሎጂ ልዩ የህክምና አገልግሎት ለመስጠት ቆርጠናል።</p>
+        <p>በ፭ ኪሎ አጠቃላይ ሆስፒታል፣ ጤናዎ እና ደህንነትዎ ቅድሚያ የምንሰጣቸው ጉዳዮች ናቸው. በርህራሄ፣ በእውቀት እና በዘመናዊ ቴክኖሎጂ ልዩ የህክምና አገልግሎት ለመስጠት ቆርጠናል።</p>
         <div className='home-images'>
           <img className="home-image" src={p1} alt="p1" /> 
           <img className="home-image" src={p2} alt="p2" /> 
@@ -76,10 +76,10 @@ const Home = () => {
         <span className="social-icon">Twitter</span>
         <span className="social-icon">Instagram</span>
       </div>
-      <p className="footer-tel">Tel: <a href="tel:+123456789">+123456789</a></p>
-      <p className="footer-email">Email: <a href="mailto:info@newlifegeneralhospital.com">info@newlifegeneralhospital.com</a></p>
+      <p className="footer-tel">Tel: <a href="tel:+251-900000000">+251-900000000</a></p>
+      <p className="footer-email">Email: <a href="mailto:info@amistkilogeneralhospital.com">info@amistkilogeneralhospital.com</a></p>
     </div>
-    <p className="footer-copywrite">© 2024 New Life General Hospital. All rights reserved.</p>
+    <p className="footer-copywrite">© 2024 Amist Kilo General Hospital. All rights reserved.</p>
   </div>
 </footer>
     </div>
