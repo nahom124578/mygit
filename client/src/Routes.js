@@ -65,11 +65,6 @@ import Acount from "./Manager/Acount.jsx";
 import EmployeecontextProvider from "./Componenet/EmployeeMain/Context/Employeecontext.js";
 import Employee from "./pages/employee";
 // import FinancePage from './pages/FinancePage.js';
-<<<<<<< HEAD
-import HomeAdmin from "./pages/Home";
-import Hr from "./pages/Hr.js";
-import JobApplicationsList from "./Componenet/hr/JobApplicantView.js";
-=======
 import HomeAdmin from './pages/Home';
 import Hr from './pages/Hr.js';
 
@@ -81,8 +76,6 @@ import PharmaHome from './Pharmacy/PharmaHome.jsx';
 // end
 
 
-
->>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
 import EmployeeTable from "../src/Componenet/Finance/EmployeeTable.jsx";
 import Expense from "../src/Componenet/Finance/Expense";
 import HospitalService from "../src/Componenet/Finance/HospitalService";
@@ -214,29 +207,6 @@ function Routess() {
           <Route path="/sold-products" element={<SoldProduct />} />
           <Route path="/pay-expense" element={<PayExpense />} />
 
-<<<<<<< HEAD
-          <Route path="/hospitalservice" element={<HospitalService />} />
-          <Route path="/paidsalary" element={<PaidSalary />} />
-          <Route path="/expense" element={<Expense />} />
-          <Route path="/revenue" element={<Revenue />} />
-          <Route path="/photo" element={<ForPhoto />} />
-          <Route path="/fireEmployee" element={<FireEmployee />} />
-          <Route path="/hireForm" element={<HireForm />} />
-          <Route path="/announceVacancy" element={<AnnounceVacancy />} />
-          <Route path="/VacancyPage" element={<VacancyPage />} />
-          <Route path="/receptionist" element={<Reception></Reception>} />
-          <Route
-            path="/content-creatorModule"
-            element={<ContentA></ContentA>}
-          />
-          <Route path="/radiologist" element={<Radiologist></Radiologist>} />
-        </Routes>
-      </BrowserRouter>
-    </EmployeecontextProvider>
-  );
-}
-export default Routess;
-=======
 
 
                     <Route path="/manager" element={<Manager></Manager>}></Route>
@@ -293,4 +263,3 @@ export default Routess;
     );
 };
 export default Routess
->>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
