@@ -179,10 +179,6 @@ function Routess() {
           <Route path="/res" element={<Resorse />} />
           <Route path="/not" element={<NotificationCenter />} />
 
-<<<<<<< HEAD
-          <Route path="/manager" element={<Manager></Manager>}></Route>
-          <Route path="/employees" element={<Employees />} />
-=======
                     <Route path="/App1" element={<PatientInformation></PatientInformation>} />
                     <Route path="/LabTestRequestPage" element={<LaboratoryRequest></LaboratoryRequest>} />
                     <Route path="/Medicalimagingrequest" element={<ImagingRequest></ImagingRequest>} />
@@ -204,7 +200,6 @@ function Routess() {
                     <Route path="/events" element={<Upcome />} />
                     <Route path="/res" element={<Resorse />} />
                     <Route path="/not" element={<NotificationCenter />} />
->>>>>>> 3b398118144b51150ec294deb8d7688b9144192c
 
           <Route path="/admin" element={<HomeAdmin />} />
 
