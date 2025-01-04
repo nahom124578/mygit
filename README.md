@@ -87,7 +87,7 @@ setup Instructions
 
 1.clone repository here 
 ```bash
-git clone https://github.com/berahaan/nahom124578/mygit.git
+git clone https://github.com/nahom124578/mygit.git
 ```
 2.navigate to directory
 ```bash
